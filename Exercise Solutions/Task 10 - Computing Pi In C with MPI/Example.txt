@@ -1,0 +1,47 @@
+  1: #include "mpi.h"
+  2: #include <stdio.h>
+  3: #include <math.h>
+  4: 
+  5: #define NINTERVALS  10000
+  6: 
+  7: double f(double);
+  8: 
+  9: double f(double a)
+ 10: {
+ 11:     return (4.0 / (1.0 + a * a));
+ 12: }
+ 13: 
+ 14: int main(int argc, char *argv[])
+ 15: {
+ 16:     int myid, numprocs, i;
+ 17:     double PI25DT = 3.141592653589793238462643;
+ 18:     double mypi, pi, h, sum, x;
+ 19:     double startwtime = 0.0, endwtime;
+ 20: 
+ 21:     MPI_Init(&argc, &argv);
+ 22:     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
+ 23:     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
+ 24:             
+ 25:     startwtime = MPI_Wtime();
+ 26: 
+ 27:     h = 1.0 / (double) NINTERVALS;
+ 28:     sum = 0.0;
+ 29: 
+ 30:     for (i = myid + 1; i <= NINTERVALS; i += numprocs) {
+ 31:         x = h * ((double) i - 0.5);
+ 32:         sum += f(x);
+ 33:     }
+ 34:     mypi = h * sum;
+ 35: 
+ 36:     MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+ 37: 
+ 38:     if (myid == 0) {
+ 39:         printf("pi is approximately %.16f, Error is %.16f\n",
+ 40:                 pi, fabs(pi - PI25DT));
+ 41:         endwtime = MPI_Wtime();
+ 42:         printf("wall clock time = %f\n", endwtime - startwtime);
+ 43:     }
+ 44: 
+ 45:     MPI_Finalize();
+ 46:     return 0;
+ 47: }
