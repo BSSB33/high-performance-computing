@@ -1,0 +1,7 @@
+Process 2 - Sending the message: 2, to process 0
+Process 1 - Sending the message: 1, to process 0
+Process 3 - Sending the message: 3, to process 0
+Process 0 - MESSAGE RECIEVED: 1!
+Process 0 - MESSAGE RECIEVED: 2!
+Process 0 - MESSAGE RECIEVED: 3!
+All numbers are recieved, sum: 6, avg: 2
