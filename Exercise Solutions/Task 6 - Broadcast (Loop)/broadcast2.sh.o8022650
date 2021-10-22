@@ -1,0 +1,6 @@
+Process 0 - Sending the message: MESSAGE, to process 1
+Process 0 - Sending the message: MESSAGE, to process 2
+Process 0 - Sending the message: MESSAGE, to process 3
+Process 3 - MESSAGE RECIEVED: MESSAGE!
+Process 1 - MESSAGE RECIEVED: MESSAGE!
+Process 2 - MESSAGE RECIEVED: MESSAGE!
