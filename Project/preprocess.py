@@ -1,12 +1,11 @@
 import sys
 import re
 import string
-from nltk.corpus import stopwords
-import nltk
-from nltk.tokenize import word_tokenize
 import time
-
-#TODO - stopwords
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+import nltk
 
 def import_book(path):
     f = open(path, "r", encoding="utf-8")
@@ -29,17 +28,39 @@ def process_sentence(sentences):
         processed_sentences.append(sentence)
     return processed_sentences
 
-def tokenize_sentences(sentences):
+def tokenize_sentences(sentences, stemming=False):
     tokenized_sentences = []
+    stopwords_english = stopwords.words('english')
+    stemmer = PorterStemmer()
 
     for sentence in sentences:
         tokenized_sentence = word_tokenize(sentence)
         for word in tokenized_sentence:
-            tokenized_sentences.append(word)
+            if (word not in stopwords_english and word not in string.punctuation): #Removing stopwords and punctuation
+                if(stemming): #If Stemming is enabled
+                    word = stemmer.stem(word)
+                tokenized_sentences.append(word)
     return tokenized_sentences
 
 if __name__ == "__main__":
+
+    stemming = False
+    if(len(sys.argv) == 3):
+        print("Generating Outputs...")
+        stemming = sys.argv[2]
+        if (stemming == 'False'): print("Avoiding Stemming...")
+        elif(stemming == 'True'): print("Using Stemming...")
+
+    elif(len(sys.argv) == 2):
+        print("Avoiding Stemming...")
+        stemming = False
+        
+    elif(len(sys.argv) == 0 or len(sys.argv) > 3):
+        print("Usage: py preprocess.py <path_to_file> True/False (If Stemming is required)")
+        sys.exit()
+
     nltk.download('punkt')
+    nltk.download('stopwords')
 
     start_time = time.time()
 
@@ -49,7 +70,7 @@ if __name__ == "__main__":
     
     sentences = book.split(".")
     sentences = process_sentence(sentences)
-    tokenized_sentences = tokenize_sentences(sentences)
+    tokenized_sentences = tokenize_sentences(sentences, stemming)
     
     export_sentences(path + "_sentences.txt", sentences)
     export_sentences(path + "_tokenized_sentences.txt", tokenized_sentences)
