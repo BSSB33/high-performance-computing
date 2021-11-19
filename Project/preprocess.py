@@ -1,5 +1,4 @@
 import sys
-import os
 import re
 import string
 from nltk.corpus import stopwords
@@ -8,11 +7,10 @@ from nltk.tokenize import word_tokenize
 import time
 
 #TODO - stopwords
-#TODO - wrong word separation
 
 def import_book(path):
     f = open(path, "r", encoding="utf-8")
-    return f.read().replace(". ", ".").replace("\n", " ").replace("\r", "").replace("   ", " ")#.replace("    ", "")
+    return f.read().replace(" . . .", " ").replace(". ", ".").replace("\n", " ").replace("\r", "").replace("   ", " ")
 
 def export_sentences(path, sentences):
     f = open(path, "w", encoding="utf-8")
@@ -22,11 +20,12 @@ def export_sentences(path, sentences):
 def process_sentence(sentences):
     processed_sentences = []
     for sentence in sentences:
-        sentence = sentence.replace("-", " ")
-        sentence = re.sub('^\s*$', '', sentence)
-        sentence = re.sub('[' + string.punctuation + ']', '', sentence)
-        sentence = re.sub('[“”’—]*', '', sentence)
-        sentence = re.sub("^\s+|\s+$", '', sentence, flags=re.UNICODE)
+        sentence = sentence.replace("-", " ")                           #Removing normal dash-es
+        sentence = sentence.replace(" . . . ", " ")                     #Removing special characters
+        sentence = re.sub('^\s*$', '', sentence)                        #Removing empty lines
+        sentence = re.sub('[' + string.punctuation + ']', '', sentence) #Removing punctuation
+        sentence = re.sub('[“”’—]*', '', sentence)                      #Removing special characters
+        sentence = re.sub("^\s+|\s+$", '', sentence, flags=re.UNICODE)  #Removing whitespaces at the beginning and end of the sentence
         processed_sentences.append(sentence)
     return processed_sentences
 
