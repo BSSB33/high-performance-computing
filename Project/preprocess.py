@@ -5,12 +5,14 @@ import string
 from nltk.corpus import stopwords
 import nltk
 from nltk.tokenize import word_tokenize
+import time
+
 #TODO - stopwords
 #TODO - wrong word separation
 
 def import_book(path):
     f = open(path, "r", encoding="utf-8")
-    return f.read().replace(". ", ".").replace("    ", "").replace("    ", "").replace("\n", "").replace("\r", "")
+    return f.read().replace(". ", ".").replace("\n", " ").replace("\r", "").replace("   ", " ")#.replace("    ", "")
 
 def export_sentences(path, sentences):
     f = open(path, "w", encoding="utf-8")
@@ -20,6 +22,7 @@ def export_sentences(path, sentences):
 def process_sentence(sentences):
     processed_sentences = []
     for sentence in sentences:
+        sentence = sentence.replace("-", " ")
         sentence = re.sub('^\s*$', '', sentence)
         sentence = re.sub('[' + string.punctuation + ']', '', sentence)
         sentence = re.sub('[“”’—]*', '', sentence)
@@ -39,6 +42,8 @@ def tokenize_sentences(sentences):
 if __name__ == "__main__":
     nltk.download('punkt')
 
+    start_time = time.time()
+
     path = sys.argv[1]
     book = import_book(path)
     path = path.replace(".txt", "")
@@ -49,3 +54,5 @@ if __name__ == "__main__":
     
     export_sentences(path + "_sentences.txt", sentences)
     export_sentences(path + "_tokenized_sentences.txt", tokenized_sentences)
+
+    print("--- %s seconds ---" % (time.time() - start_time))
