@@ -13,6 +13,7 @@ def import_book(path):
 
 def export_sentences(path, sentences):
     f = open(path, "w", encoding="utf-8")
+    f.write(str(len(sentences)) + "\n")
     for sentence in sentences:
         f.write(str(sentence) + "\n")
 
@@ -53,7 +54,7 @@ if __name__ == "__main__":
         elif(stemming == 'True'): print("Using Stemming...")
 
     elif(len(sys.argv) == 2): print("Using Stemming...")
-    
+
     elif(len(sys.argv) == 0 or len(sys.argv) > 3):
         print("Usage: py preprocess.py <path_to_file> True/False (If Stemming is required)")
         sys.exit()
