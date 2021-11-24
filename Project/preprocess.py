@@ -31,30 +31,29 @@ def process_sentence(sentences):
 def tokenize_sentences(sentences, stemming=False):
     tokenized_sentences = []
     stopwords_english = stopwords.words('english')
+    conjunctions  = ["I", "so", "a", "the", "to", "of", "his", "her", "was", "in", "had", "you", "he", "she", "it", "is", "as", "with", "be", "have", "at", "on"]
     stemmer = PorterStemmer()
 
     for sentence in sentences:
         tokenized_sentence = word_tokenize(sentence)
         for word in tokenized_sentence:
-            if (word not in stopwords_english and word not in string.punctuation): #Removing stopwords and punctuation
-                if(stemming): #If Stemming is enabled
-                    word = stemmer.stem(word)
+            if(stemming): #If Stemming is enabled
+                word = stemmer.stem(word)
+            if (word not in stopwords_english and word not in conjunctions and word not in string.punctuation): #Removing stopwords and punctuation
                 tokenized_sentences.append(word)
     return tokenized_sentences
 
 if __name__ == "__main__":
 
-    stemming = False
+    stemming = True
     if(len(sys.argv) == 3):
         print("Generating Outputs...")
         stemming = sys.argv[2]
         if (stemming == 'False'): print("Avoiding Stemming...")
         elif(stemming == 'True'): print("Using Stemming...")
 
-    elif(len(sys.argv) == 2):
-        print("Avoiding Stemming...")
-        stemming = False
-        
+    elif(len(sys.argv) == 2): print("Using Stemming...")
+    
     elif(len(sys.argv) == 0 or len(sys.argv) > 3):
         print("Usage: py preprocess.py <path_to_file> True/False (If Stemming is required)")
         sys.exit()
