@@ -9,7 +9,9 @@ import nltk
 
 def import_book(path):
     f = open(path, "r", encoding="utf-8")
-    return f.read().replace(" . . .", " ").replace(". ", ".").replace("\n", " ").replace("\r", "").replace("   ", " ")
+    book = f.read().replace(" . . .", " ").replace(". ", ".").replace("\n", " ").replace("\r", "").replace("   ", " ")
+    f.close()
+    return book
 
 def export_sentences(path, sentences):
     f = open(path, "w", encoding="utf-8")
