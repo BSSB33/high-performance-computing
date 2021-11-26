@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <sys/time.h>
-#include "uthash.h"
+#include "../headers/uthash.h"
 
 struct dict_item
 {
@@ -10,6 +9,11 @@ struct dict_item
     int nr;
     UT_hash_handle hh; // makes the structure hashable
 };
+
+typedef struct {
+    long tv_sec;
+    long tv_usec;
+} timeval;
 
 struct dict_item *my_dict = NULL;
 
@@ -80,7 +84,7 @@ int main(int argc, char *argv[])
     char *line = NULL;
     size_t len = 0;
     size_t read;
-    struct timeval t1, t2;
+    timeval t1, t2;
     gettimeofday(&t1, NULL);
 
     fp = fopen(argv[1], "r");
@@ -111,7 +115,7 @@ int main(int argc, char *argv[])
     gettimeofday(&t2, NULL);
     float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
     printf("\nCompleted in %0.6f seconds", elapsed_time);
-    printf("\n\n Resulting dictionary:\n");
+    printf("\n\n Most popular words from resulting dictionary:\n");
     print_dict(30);
 
     fclose(fp);
