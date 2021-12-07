@@ -1,7 +1,7 @@
 #include <stdio.h> 
 #include <string.h> /* For strlen */ 
 #include <mpi.h> /* For WI functions, etc */ 
-const int MAX_STRING = 100; 
+const int MAX_STRING = 100000; 
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/mman.h>
@@ -13,7 +13,7 @@ const int MAX_STRING = 100;
  * return codes from open, close, fstat, mmap, munmap all need to be
  * checked for error.
 */
-int read_file_line(const char *path, int line_no, int end_line_no)
+int read_file_line(const char *path, int line_no, int end_line_no, char *output)
 {
 	struct stat s;
 	char *buf;
@@ -46,7 +46,7 @@ int read_file_line(const char *path, int line_no, int end_line_no)
 	/* optional; if the file is large, tell OS to read ahead */
 	//madvise(buf, s.st_size, MADV_SEQUENTIAL);
 
-        int line_count = (end_line_no - line_no) - 1;
+    int line_count = (end_line_no - line_no) - 1;
 	for (i = ln = 0; i < s.st_size && ln <= line_no + line_count; i++) {
 		if (buf[i] != '\n') continue;
 
@@ -59,20 +59,16 @@ int read_file_line(const char *path, int line_no, int end_line_no)
 		ret = 0;
 	} 
         else {
-                /* 	do something with the line here, like
-		write(STDOUT_FILENO, buf + start, end - start);
-                printf("%s\n", buf);    // Buffer, content of the whole text from the chunk
-                printf("%i\n", start);  // Start of the chunk
-                printf("%i\n", end);    // End of the chunk
-			or copy it out, or something
-		*/
-                if(end_line_no <= line_no){
-                        warn("ERROR: Ending line number can not be smaller then beginning line number!");
-                        printf("ERROR: Ending line number can not be smaller then beginning line number!");
-                        ret = 0;
+				//write(STDOUT_FILENO, buf + start, end - start);
+				//strncpy(output, buf + start, end - start);
+                if(end_line_no <= line_no) {
+					warn("ERROR: Ending line number can not be smaller then beginning line number!");
+					printf("ERROR: Ending line number can not be smaller then beginning line number!");
+					ret = 1;
                 }
                 else {
-                        write(STDOUT_FILENO, buf + start, end - start);
+					strncpy(output, buf + start, end - start);
+					ret = 0;
                 }
         }       
  
@@ -83,21 +79,27 @@ int read_file_line(const char *path, int line_no, int end_line_no)
 }
 
 int main(void) { 
+		char *filename = "/home/gabor.vitrai/proj/alice/alice_sentences.txt";
         int comm_sz; /* Number of processes */ 
         int my_rank; /* My process rank */ 
 
         MPI_Init(NULL, NULL); 
         MPI_Comm_size(MPI_COMM_WORLD, &comm_sz); 
-        MPI_Comm_rank(MPI_COMM_WORLD, &my_rank); 
+        MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+
         if (my_rank == 0) { // Main
-        //TODO Broadcast first line of the files and open every file from n+1 (skipping the first line - alias number of rows)
-                //printf("Process %i out of %i - Main\n", my_rank, comm_sz);
-                read_file_line("/home/gabor.vitrai/proj/alice/alice_sentences.txt", 900, 902);
+        	//TODO Broadcast first line of the files and open every file from n+1 (skipping the first line - alias number of rows)
+			char text[MAX_STRING];
+        	read_file_line(filename, 900, 902, text);
+			printf("%s\n", text);
         } 
         else { // Childs
-                //printf("Process %i out of %i - Child\n", my_rank, comm_sz);
+
         }
         MPI_Finalize(); 
         return 0; 
-} /* main */ 
+} /* main */
 
+// Problems:
+// 2. Child rank is always 4
+// 3. Big text input is still not working perfectly
