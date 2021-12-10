@@ -214,6 +214,8 @@ int main(int argc, char **argv)
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
+    int LINES_PER_PROCESS = NR_OF_LINES / comm_sz;
+
     /**
      * creating custom struct MPI datatype 
      */
@@ -235,9 +237,16 @@ int main(int argc, char **argv)
     {
         struct dict_item_hh *small_dict = NULL;
         char buf[STRING_MAX];
-        int start = my_rank * (NR_OF_LINES / comm_sz) + 1;
-        int end = start + (NR_OF_LINES / comm_sz) + 1;
-        printf("start: %d - end: %d\n", start, end);
+        int start = my_rank * LINES_PER_PROCESS + 1;
+        int end;
+        if (my_rank < comm_sz - 1)
+        {
+            end = start + LINES_PER_PROCESS - 1;
+        }
+        else {
+            end = NR_OF_LINES;
+        }
+        printf("start: %d - end: %d - length: %d\n", start, end, end - start);
         // printf("start: %d\n", start);
         read_file_line(argv[1], start, end, buf);
         char *word = strtok(buf, " \t\r\n\v\f");
@@ -269,8 +278,8 @@ int main(int argc, char **argv)
         struct dict_item_hh *MASTER_DICT = NULL;
 
         char buf[STRING_MAX];
-        int start = my_rank * (NR_OF_LINES / comm_sz) + 1;
-        int end = start + (NR_OF_LINES / comm_sz) - 1;
+        int start = my_rank * LINES_PER_PROCESS + 1;
+        int end = start + LINES_PER_PROCESS - 1;
         printf("start: %d - end: %d\n", start, end);
         read_file_line(argv[1], start, end, buf);
         char *word = strtok(buf, " \t\r\n\v\f");
@@ -280,15 +289,22 @@ int main(int argc, char **argv)
             word = strtok(NULL, " \t\r\n\v\f");
         }
 
-        unsigned int dic_len;
-        MPI_Recv(&dic_len, 1, MPI_UNSIGNED, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        // printf("Received dict size: %d\n", dic_len);
-        unsigned int i;
-        struct dict_item k;
-        for (i = 0; i < dic_len; i++)
+        unsigned int dic_len[comm_sz];
+        unsigned int i, j;
+        for (i = 1; i < comm_sz; i++)
         {
-            MPI_Recv(&k, 1, DictType, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            add_item_to_master_dict(&MASTER_DICT, k.word, k.nr);
+            MPI_Recv(&dic_len[i], 1, MPI_UNSIGNED, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        }
+
+        // printf("Received dict size: %d\n", dic_len);
+        struct dict_item k;
+        for (j = 1; j < comm_sz; j++)
+        {
+            for (i = 0; i < dic_len[j]; i++)
+            {
+                MPI_Recv(&k, 1, DictType, j, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                add_item_to_master_dict(&MASTER_DICT, k.word, k.nr);
+            }
         }
         printf("Finalized dict\n");
         gettimeofday(&t2, NULL);
