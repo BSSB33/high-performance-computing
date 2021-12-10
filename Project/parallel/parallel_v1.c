@@ -42,7 +42,7 @@ const int READ_BY_WORDS = 0;
 const int READ_BY_SENTENCES = 1;
 const int STRING_MAX = 100000;
 
-void add_item_to_dict(struct dict_item_hh** dict, char *word)
+void add_item_to_dict(struct dict_item_hh **dict, char *word)
 {
     struct dict_item_hh *s;
     HASH_FIND_STR(*dict, word, s);
@@ -56,6 +56,23 @@ void add_item_to_dict(struct dict_item_hh** dict, char *word)
     else
     {
         s->nr++;
+    }
+}
+
+void add_item_to_master_dict(struct dict_item_hh **master_dict, char *word, int nr)
+{
+    struct dict_item_hh *s;
+    HASH_FIND_STR(*master_dict, word, s);
+    if (s == NULL)
+    {
+        s = (struct dict_item_hh *)malloc(sizeof *s);
+        strcpy(s->word, word);
+        HASH_ADD_STR(*master_dict, word, s);
+        s->nr = nr;
+    }
+    else
+    {
+        s->nr += nr;
     }
 }
 
@@ -79,7 +96,7 @@ int nr_sort(struct dict_item_hh *a, struct dict_item_hh *b)
     return (b->nr - a->nr);
 }
 
-void sort_by_nr(struct dict_item_hh** dict)
+void sort_by_nr(struct dict_item_hh **dict)
 {
     HASH_SORT(*dict, nr_sort);
 }
@@ -229,11 +246,21 @@ int main(int argc, char **argv)
             add_item_to_dict(&small_dict, word);
             word = strtok(NULL, " ");
         }
-        printf("sorting dict...\n");
-        sort_by_nr(&small_dict);
-        printf("printing dict...\n");
-        print_dict(small_dict, 15);
-        // MPI_Send(&s, 1, DictType, 0, 0, MPI_COMM_WORLD);
+        // printf("sorting dict...\n");
+        // sort_by_nr(&small_dict);
+        // printf("printing dict...\n");
+        // print_dict(small_dict, 15);
+        unsigned int small_dict_len = HASH_COUNT(small_dict);
+        MPI_Send(&small_dict_len, 1, MPI_UNSIGNED, 0, 0, MPI_COMM_WORLD);
+        struct dict_item_hh *s;
+        for (s = small_dict; s != NULL; s = (struct dict_item_hh *)(s->hh.next))
+        {
+            struct dict_item k;
+            k.nr = s->nr;
+            strcpy(k.word, s->word);
+            MPI_Send(&k, 1, DictType, 0, 0, MPI_COMM_WORLD);
+        }
+        printf("Finalized sending dict\n");
     }
     else
     {
@@ -249,10 +276,25 @@ int main(int argc, char **argv)
 
         // receive created dictionaries from processes and create one master dict for output
 
-        // MPI_Recv(&s, 1, DictType, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        unsigned int dic_len;
+        MPI_Recv(&dic_len, 1, MPI_UNSIGNED, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf("Received dict size: %d\n", dic_len);
+        unsigned int i;
+        struct dict_item k;
+        struct dict_item_hh *MASTER_DICT = NULL;
+        for (i = 0; i < dic_len; i++)
+        {
+            MPI_Recv(&k, 1, DictType, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            add_item_to_master_dict(&MASTER_DICT, k.word, k.nr);
+        }
+        printf("Finalized dict\n");
+        printf("Received dict length: %d\n", HASH_COUNT(MASTER_DICT));
         // printf("Received:\n - nr: %d\n - word: %s\n", s.nr, s.word);
-    }
+gettimeofday(&t2, NULL);
+float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
 
+printf("\nCompleted in %0.6f seconds", elapsed_time);    
+}
     // if (atoi(argv[2]) == 0)
     // {
     //     while ((read = getline(&line, &len, fp)) != -1)
@@ -273,7 +315,6 @@ int main(int argc, char **argv)
 
     // sort_by_nr(my_dict);
     // gettimeofday(&t2, NULL);
-    // float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
     // printf("\nCompleted in %0.6f seconds", elapsed_time);
     // printf("\n\n Most popular words from resulting dictionary:\n");
     // print_dict(my_dict, 30);
