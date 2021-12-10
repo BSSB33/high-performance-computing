@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <sys/time.h>
 #include <mpi.h>
 #include <limits.h>
 #include <unistd.h>
@@ -188,7 +188,7 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
-    FILE *fp;
+    // FILE *fp;
 
     // struct dict_item_hh *my_dict = NULL;
 
@@ -198,7 +198,7 @@ int main(int argc, char **argv)
     //     exit(EXIT_FAILURE);
     // }
 
-    int FILE_MODE = atoi(argv[2]);
+    // int FILE_MODE = atoi(argv[2]);
     // if (FILE_MODE != READ_BY_SENTENCES || FILE_MODE != READ_BY_WORDS)
     // {
     //     printf("%d\n", FILE_MODE);
@@ -235,21 +235,20 @@ int main(int argc, char **argv)
     {
         struct dict_item_hh *small_dict = NULL;
         char buf[STRING_MAX];
-        // size_t len = 0;
-        // size_t read;
-        int start = my_rank * (NR_OF_LINES / comm_sz);
-        printf("start: %d\n", start);
-        read_file_line(argv[1], start, start + (NR_OF_LINES / comm_sz), buf);
-        char *word = strtok(buf, " ");
+        int start = my_rank * (NR_OF_LINES / comm_sz) + 1;
+        int end = start + (NR_OF_LINES / comm_sz) + 1;
+        printf("start: %d - end: %d\n", start, end);
+        // printf("start: %d\n", start);
+        read_file_line(argv[1], start, end, buf);
+        char *word = strtok(buf, " \t\r\n\v\f");
+        // char last_word[20];
         while (word)
         {
             add_item_to_dict(&small_dict, word);
-            word = strtok(NULL, " ");
+            // strcpy(last_word, word);
+            word = strtok(NULL, " \t\r\n\v\f");
         }
-        // printf("sorting dict...\n");
-        // sort_by_nr(&small_dict);
-        // printf("printing dict...\n");
-        // print_dict(small_dict, 15);
+        // printf("last word: %s\n", last_word);
         unsigned int small_dict_len = HASH_COUNT(small_dict);
         MPI_Send(&small_dict_len, 1, MPI_UNSIGNED, 0, 0, MPI_COMM_WORLD);
         struct dict_item_hh *s;
@@ -260,41 +259,47 @@ int main(int argc, char **argv)
             strcpy(k.word, s->word);
             MPI_Send(&k, 1, DictType, 0, 0, MPI_COMM_WORLD);
         }
-        printf("Finalized sending dict\n");
+        // printf("Finalized sending dict\n");
     }
     else
     {
-        timeval t1, t2;
+        struct timeval t1, t2;
         gettimeofday(&t1, NULL);
-        // open file for reading, read number of lines
-        // int nr_of_lines;
-        // broadcast number of lines to all processes, so they can calculate where to start reading from based on comm_sz and rank
 
-        // first process starts from first line until nr_of_lines/comm_sz
-        // just as in sequential code, create dict from words, reading line by line
-        // until (my_rank + 1) * (nr_of_lines / comm_sz) && getline() != -1
+        struct dict_item_hh *MASTER_DICT = NULL;
 
-        // receive created dictionaries from processes and create one master dict for output
+        char buf[STRING_MAX];
+        int start = my_rank * (NR_OF_LINES / comm_sz) + 1;
+        int end = start + (NR_OF_LINES / comm_sz) - 1;
+        printf("start: %d - end: %d\n", start, end);
+        read_file_line(argv[1], start, end, buf);
+        char *word = strtok(buf, " \t\r\n\v\f");
+        while (word)
+        {
+            add_item_to_dict(&MASTER_DICT, word);
+            word = strtok(NULL, " \t\r\n\v\f");
+        }
 
         unsigned int dic_len;
         MPI_Recv(&dic_len, 1, MPI_UNSIGNED, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        printf("Received dict size: %d\n", dic_len);
+        // printf("Received dict size: %d\n", dic_len);
         unsigned int i;
         struct dict_item k;
-        struct dict_item_hh *MASTER_DICT = NULL;
         for (i = 0; i < dic_len; i++)
         {
             MPI_Recv(&k, 1, DictType, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             add_item_to_master_dict(&MASTER_DICT, k.word, k.nr);
         }
         printf("Finalized dict\n");
-        printf("Received dict length: %d\n", HASH_COUNT(MASTER_DICT));
-        // printf("Received:\n - nr: %d\n - word: %s\n", s.nr, s.word);
-gettimeofday(&t2, NULL);
-float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
+        gettimeofday(&t2, NULL);
+        printf("Final dic length: %d\n", HASH_COUNT(MASTER_DICT));
+        float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
 
-printf("\nCompleted in %0.6f seconds", elapsed_time);    
-}
+        printf("\nCompleted in %0.6f seconds\n", elapsed_time);
+        printf("\n\n Most popular words from resulting dictionary:\n");
+        sort_by_nr(&MASTER_DICT);
+        print_dict(MASTER_DICT, 10);
+    }
     // if (atoi(argv[2]) == 0)
     // {
     //     while ((read = getline(&line, &len, fp)) != -1)

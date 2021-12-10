@@ -10,7 +10,8 @@ struct dict_item
     UT_hash_handle hh; // makes the structure hashable
 };
 
-typedef struct {
+typedef struct
+{
     long tv_sec;
     long tv_usec;
 } timeval;
@@ -100,23 +101,27 @@ int main(int argc, char *argv[])
     }
     else
     {
+        char last_word[20];
         while ((read = getline(&line, &len, fp)) != -1)
         {
-            char *word = strtok(line, " ");
+            char *word = strtok(line, " \t\r\n\v\f");
             while (word)
             {
                 add_item(word);
-                word = strtok(NULL, " ");
+                strcpy(last_word, word);
+                word = strtok(NULL, " \t\r\n\v\f");
             }
         }
+        printf("last word: %s\n", last_word);
     }
 
     sort_by_nr();
     gettimeofday(&t2, NULL);
     float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
-    printf("\nCompleted in %0.6f seconds", elapsed_time);
+    printf("\nCompleted in %0.6f seconds\n", elapsed_time);
+    printf("Final dic length: %d\n", HASH_COUNT(my_dict));
     printf("\n\n Most popular words from resulting dictionary:\n");
-    print_dict(30);
+    print_dict(10);
 
     fclose(fp);
     free(line);
