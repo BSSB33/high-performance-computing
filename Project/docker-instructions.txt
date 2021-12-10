@@ -1,0 +1,7 @@
+docker run --rm -it -v ${pwd}:/project nlknguyen/alpine-mpich
+
+mpicc -g -Wall -o proj proj.c -std=c99
+
+mpirun -n 4 ./proj
+
+(https://hub.docker.com/r/nlknguyen/alpine-mpich)
