@@ -233,7 +233,7 @@ int main(int argc, char **argv)
     MPI_Type_create_struct(2, blocklen, disp, type, &DictType);
     MPI_Type_commit(&DictType);
 
-    if (my_rank != 0)
+    if (my_rank != 0) // Childs
     {
         struct dict_item_hh *small_dict = NULL;
         char buf[STRING_MAX];
@@ -246,42 +246,47 @@ int main(int argc, char **argv)
         else {
             end = NR_OF_LINES;
         }
-        printf("start: %d - end: %d - length: %d\n", start, end, end - start);
-        // printf("start: %d\n", start);
+        //printf("start: %d - end: %d - length: %d\n", start, end, end - start);
+        
         read_file_line(argv[1], start, end, buf);
         char *word = strtok(buf, " \t\r\n\v\f");
-        // char last_word[20];
+        
         while (word)
         {
             add_item_to_dict(&small_dict, word);
             // strcpy(last_word, word);
             word = strtok(NULL, " \t\r\n\v\f");
         }
-        // printf("last word: %s\n", last_word);
+        //Sening the length of the small dictionary
         unsigned int small_dict_len = HASH_COUNT(small_dict);
         MPI_Send(&small_dict_len, 1, MPI_UNSIGNED, 0, 0, MPI_COMM_WORLD);
+
         struct dict_item_hh *s;
+        struct dict_item tmp[small_dict_len];
+        int i = 0;
         for (s = small_dict; s != NULL; s = (struct dict_item_hh *)(s->hh.next))
         {
             struct dict_item k;
             k.nr = s->nr;
             strcpy(k.word, s->word);
-            MPI_Send(&k, 1, DictType, 0, 0, MPI_COMM_WORLD);
+            tmp[i] = k;
+            i++;
         }
-        // printf("Finalized sending dict\n");
+        MPI_Send(&tmp, small_dict_len, DictType, 0, 0, MPI_COMM_WORLD);
     }
-    else
+    else // Main
     {
         struct timeval t1, t2;
         gettimeofday(&t1, NULL);
 
         struct dict_item_hh *MASTER_DICT = NULL;
 
-        /* char buf[STRING_MAX];
+        /*char buf[STRING_MAX];
         int start = my_rank * LINES_PER_PROCESS + 1;
         int end = start + LINES_PER_PROCESS - 1;
-        printf("start: %d - end: %d\n", start, end);
+        //printf("start: %d - end: %d\n", start, end);
         read_file_line(argv[1], start, end, buf);
+
         char *word = strtok(buf, " \t\r\n\v\f");
         while (word)
         {
@@ -295,24 +300,25 @@ int main(int argc, char **argv)
         {
             MPI_Recv(&dic_len[i], 1, MPI_UNSIGNED, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
-
-        // printf("Received dict size: %d\n", dic_len);
-        struct dict_item k;
-        for (j = 1; j < comm_sz; j++)
+        
+        // Recieving a small dictionary from every child and addint every record of it to the master dictionary
+        for (i = 1; i < comm_sz; i++)
         {
-            for (i = 0; i < dic_len[j]; i++)
-            {
-                MPI_Recv(&k, 1, DictType, j, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                add_item_to_master_dict(&MASTER_DICT, k.word, k.nr);
+            struct dict_item received_dict[dic_len[i]];
+            MPI_Recv(&received_dict, dic_len[i], DictType, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            for (j = 0; j < dic_len[i]; j++)
+            {                
+                add_item_to_master_dict(&MASTER_DICT, received_dict[j].word, received_dict[j].nr);
             }
         }
+        
         printf("Finalized dict\n");
         gettimeofday(&t2, NULL);
         printf("Final dic length: %d\n", HASH_COUNT(MASTER_DICT));
         float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
 
         printf("\nCompleted in %0.6f seconds\n", elapsed_time);
-        printf("\n\n Most popular words from resulting dictionary:\n");
+        printf("\n\nMost popular words from resulting dictionary:\n");
         sort_by_nr(&MASTER_DICT);
         print_dict(MASTER_DICT, 10);
     }

@@ -10,6 +10,7 @@ const int MAX_STRING = 100000;
 #include <err.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <math.h>
  
 /* following code assumes all file operations succeed. In practice,
  * return codes from open, close, fstat, mmap, munmap all need to be
@@ -107,7 +108,7 @@ int main(void) {
 		MPI_Type_commit(&DictType);
 
         if (my_rank == 0) { // Main
-
+			printf("%f\n", ceil(0.4));
 			struct node data[5] = {{"alice", 5}, {"bob", 10}, {"charlie", 15}, {"david", 20}, {"eve", 25}};
 
 			int size = sizeof(data) / sizeof(data[0]);
