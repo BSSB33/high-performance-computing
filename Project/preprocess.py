@@ -20,7 +20,7 @@ def export_sentences(path, sentences):
     for sentence in sentences:
         f.write(str(sentence) + "\n")
 
-def process_sentence(sentences):
+def process_sentence(sentences, conjunctions):
     processed_sentences = []
     for sentence in sentences:
         sentence = sentence.replace("-", " ")                                       #Removing normal dash-es
@@ -30,14 +30,14 @@ def process_sentence(sentences):
         sentence = re.sub('[“”’—\\|\/]*', '', sentence)                             #Removing special characters
         sentence = re.sub("^\s+|\s+$", '', sentence, flags=re.UNICODE)              #Removing whitespaces at the beginning and end of the sentence
         sentence = ' '.join([word for word in sentence.split() if len(word) <= 25]) #Removing long words
+        sentence = ' '.join([word for word in sentence.split() if word not in conjunctions]) #Removing long words
         if(sentence != ""):
             processed_sentences.append(sentence)
     return processed_sentences
 
-def tokenize_sentences(sentences, stemming=False):
+def tokenize_sentences(sentences, conjunctions, stemming=False):
     tokenized_sentences = []
     stopwords_english = stopwords.words('english')
-    conjunctions  = ["I", "so", "a", "and", "the", "to", "of", "his", "her", "was", "in", "had", "you", "he", "she", "it", "is", "as", "with", "be", "have", "at", "on"]
     stemmer = PorterStemmer()
 
     for sentence in sentences:
@@ -50,7 +50,7 @@ def tokenize_sentences(sentences, stemming=False):
     return tokenized_sentences
 
 if __name__ == "__main__":
-
+    conjunctions  = ["I", "i", "The", "THE", "He", "She", "His", "Her",  "so", "a", "and", "the", "It", "to", "of", "his", "her", "was", "in", "had", "you", "he", "she", "it", "is", "as", "with", "be", "have", "at", "on"]
     stemming = True
     if(len(sys.argv) == 3):
         print("Generating Outputs...")
@@ -77,8 +77,8 @@ if __name__ == "__main__":
     path = path.replace(".txt", "")
     
     sentences = book.split(".")
-    sentences = process_sentence(sentences)
-    tokenized_sentences = tokenize_sentences(sentences, stemming)
+    sentences = process_sentence(sentences, conjunctions)
+    tokenized_sentences = tokenize_sentences(sentences, conjunctions, stemming)
     
     export_sentences(path + "_sentences.txt", sentences)
     export_sentences(path + "_tokenized_sentences.txt", tokenized_sentences)

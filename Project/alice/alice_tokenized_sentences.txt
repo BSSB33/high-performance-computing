@@ -1,9 +1,8 @@
-13637
+13185
 chapter
 rabbit
 hole
 alic
-wa
 begin
 get
 veri
@@ -17,7 +16,6 @@ twice
 peep
 book
 sister
-wa
 read
 pictur
 convers
@@ -28,7 +26,6 @@ alic
 without
 pictur
 convers
-wa
 consid
 mind
 well
@@ -58,7 +55,6 @@ pink
 eye
 ran
 close
-wa
 noth
 veri
 remark
@@ -115,7 +111,6 @@ ran
 across
 field
 fortun
-wa
 time
 see
 pop
@@ -131,7 +126,6 @@ never
 onc
 consid
 world
-wa
 get
 rabbit
 hole
@@ -155,7 +149,6 @@ deep
 well
 either
 well
-wa
 veri
 deep
 fell
@@ -166,7 +159,6 @@ time
 went
 look
 wonder
-wa
 go
 happen
 next
@@ -174,9 +166,7 @@ first
 tri
 look
 make
-wa
 come
-wa
 dark
 see
 anyth
@@ -199,13 +189,11 @@ jar
 one
 shelv
 pass
-wa
 label
 orang
 marmalad
 great
 disappoint
-wa
 empti
 like
 drop
@@ -242,7 +230,6 @@ even
 fell
 top
 hous
-wa
 veri
 like
 true
@@ -284,17 +271,14 @@ lesson
 schoolroom
 though
 thi
-wa
 veri
 good
 opportun
 show
 knowledg
-wa
 one
 listen
 still
-wa
 good
 practic
 say
@@ -309,7 +293,6 @@ got
 alic
 idea
 latitud
-wa
 longitud
 either
 thought
@@ -335,10 +318,8 @@ head
 downward
 antipathi
 think
-wa
 rather
 glad
-wa
 one
 listen
 thi
@@ -381,7 +362,6 @@ shall
 see
 written
 somewher
-wa
 noth
 els
 alic
@@ -395,7 +375,6 @@ much
 night
 think
 dinah
-wa
 cat
 hope
 theyll
@@ -453,11 +432,9 @@ matter
 way
 put
 felt
-wa
 doze
 begun
 dream
-wa
 walk
 hand
 hand
@@ -481,30 +458,24 @@ stick
 dri
 leav
 fall
-wa
 alic
-wa
 bit
 hurt
 jump
 feet
 moment
 look
-wa
 dark
 overhead
 befor
-wa
 anoth
 long
 passag
 white
 rabbit
-wa
 still
 sight
 hurri
-wa
 moment
 lost
 away
@@ -512,7 +483,6 @@ went
 alic
 like
 wind
-wa
 time
 hear
 say
@@ -523,20 +493,17 @@ ear
 whisker
 late
 get
-wa
 close
 behind
 turn
 corner
 rabbit
-wa
 longer
 seen
 found
 long
 low
 hall
-wa
 lit
 row
 lamp
@@ -557,7 +524,6 @@ walk
 sadli
 middl
 wonder
-wa
 ever
 get
 suddenli
@@ -570,7 +536,6 @@ tabl
 made
 solid
 glass
-wa
 noth
 except
 tini
@@ -579,7 +544,6 @@ key
 alic
 first
 thought
-wa
 might
 belong
 one
@@ -590,7 +554,6 @@ either
 lock
 larg
 key
-wa
 small
 ani
 rate
@@ -608,7 +571,6 @@ curtain
 notic
 befor
 behind
-wa
 littl
 door
 fifteen
@@ -723,14 +685,12 @@ found
 littl
 bottl
 certainli
-wa
 befor
 said
 alic
 round
 neck
 bottl
-wa
 paper
 label
 word
@@ -739,7 +699,6 @@ beauti
 print
 larg
 letter
-wa
 veri
 well
 say
@@ -747,7 +706,6 @@ drink
 wise
 littl
 alic
-wa
 go
 hurri
 ill
@@ -807,7 +765,6 @@ later
 howev
 thi
 bottl
-wa
 mark
 poison
 alic
@@ -842,9 +799,7 @@ must
 shut
 like
 telescop
-wa
 inde
-wa
 onli
 ten
 inch
@@ -852,7 +807,6 @@ high
 face
 brighten
 thought
-wa
 right
 size
 go
@@ -865,7 +819,6 @@ howev
 wait
 minut
 see
-wa
 go
 shrink
 ani
@@ -931,7 +884,6 @@ climb
 one
 leg
 tabl
-wa
 slipperi
 tire
 tri
@@ -975,12 +927,10 @@ ear
 cheat
 game
 croquet
-wa
 play
 thi
 curiou
 child
-wa
 veri
 fond
 pretend
@@ -1007,7 +957,6 @@ fell
 littl
 glass
 box
-wa
 lie
 tabl
 open
@@ -1056,9 +1005,7 @@ top
 head
 feel
 way
-wa
 grow
-wa
 quit
 surpris
 find
@@ -1102,7 +1049,6 @@ curious
 curious
 cri
 alic
-wa
 much
 surpris
 moment
@@ -1117,7 +1063,6 @@ like
 largest
 telescop
 ever
-wa
 good
 bye
 feet
@@ -1207,7 +1152,6 @@ struck
 roof
 hall
 fact
-wa
 nine
 feet
 high
@@ -1221,7 +1165,6 @@ garden
 door
 poor
 alic
-wa
 much
 could
 lie
@@ -1232,7 +1175,6 @@ garden
 one
 eye
 get
-wa
 hopeless
 ever
 sat
@@ -1261,7 +1203,6 @@ went
 shed
 gallon
 tear
-wa
 larg
 pool
 round
@@ -1281,9 +1222,7 @@ hastili
 dri
 eye
 see
-wa
 come
-wa
 white
 rabbit
 return
@@ -1316,7 +1255,6 @@ wait
 alic
 felt
 desper
-wa
 readi
 ask
 help
@@ -1350,7 +1288,6 @@ took
 fan
 glove
 hall
-wa
 veri
 hot
 kept
@@ -1373,7 +1310,6 @@ chang
 night
 let
 think
-wa
 got
 thi
 morn
@@ -1499,7 +1435,6 @@ doth
 littl
 crocodil
 improv
-hi
 shine
 tail
 pour
@@ -1513,7 +1448,6 @@ seem
 grin
 neatli
 spread
-hi
 claw
 welcom
 littl
@@ -1598,7 +1532,6 @@ said
 thi
 look
 hand
-wa
 surpris
 see
 put
@@ -1608,7 +1541,6 @@ littl
 white
 kid
 glove
-wa
 talk
 done
 thought
@@ -1623,11 +1555,9 @@ found
 nearli
 could
 guess
-wa
 two
 feet
 high
-wa
 go
 shrink
 rapidli
@@ -1635,9 +1565,7 @@ soon
 found
 caus
 thi
-wa
 fan
-wa
 hold
 drop
 hastili
@@ -1646,7 +1574,6 @@ avoid
 shrink
 away
 altogeth
-wa
 narrow
 escap
 said
@@ -1670,12 +1597,10 @@ door
 ala
 littl
 door
-wa
 shut
 littl
 golden
 key
-wa
 lie
 glass
 tabl
@@ -1687,7 +1612,6 @@ thought
 poor
 child
 never
-wa
 small
 thi
 befor
@@ -1701,13 +1625,11 @@ slip
 anoth
 moment
 splash
-wa
 chin
 salt
 water
 first
 idea
-wa
 somehow
 fallen
 sea
@@ -1746,11 +1668,9 @@ station
 howev
 soon
 made
-wa
 pool
 tear
 wept
-wa
 nine
 feet
 high
@@ -1785,7 +1705,6 @@ way
 swam
 nearer
 make
-wa
 first
 thought
 must
@@ -1793,10 +1712,8 @@ walru
 hippopotamu
 rememb
 small
-wa
 soon
 made
-wa
 onli
 mous
 slip
@@ -1888,7 +1805,6 @@ began
 où
 est
 chatt
-wa
 first
 sentenc
 french
@@ -1982,7 +1898,6 @@ alic
 thi
 time
 mous
-wa
 bristl
 felt
 certain
@@ -1997,10 +1912,8 @@ rather
 inde
 cri
 mous
-wa
 trembl
 end
-hi
 tail
 would
 talk
@@ -2087,7 +2000,6 @@ afraid
 ive
 offend
 mous
-wa
 swim
 away
 hard
@@ -2120,7 +2032,6 @@ swam
 slowli
 back
 face
-wa
 quit
 pale
 passion
@@ -2143,12 +2054,10 @@ whi
 hate
 cat
 dog
-wa
 high
 time
 go
 pool
-wa
 get
 quit
 crowd
@@ -2195,7 +2104,6 @@ uncomfort
 first
 question
 cours
-wa
 get
 dri
 consult
@@ -2232,13 +2140,11 @@ allow
 without
 know
 old
-wa
 lori
 posit
 refus
 tell
 age
-wa
 said
 last
 mous
@@ -2293,10 +2199,8 @@ william
 conqueror
 whose
 caus
-wa
 favour
 pope
-wa
 soon
 submit
 english
@@ -2391,10 +2295,8 @@ crown
 william
 conduct
 first
-wa
 moder
 insol
-hi
 norman
 get
 dear
@@ -2445,14 +2347,12 @@ smile
 bird
 titter
 audibl
-wa
 go
 say
 said
 dodo
 offend
 tone
-wa
 best
 thing
 get
@@ -2510,7 +2410,6 @@ parti
 place
 along
 cours
-wa
 one
 two
 three
@@ -2520,11 +2419,9 @@ run
 like
 left
 like
-wa
 easi
 know
 race
-wa
 howev
 run
 half
@@ -2612,7 +2509,6 @@ got
 hand
 round
 prize
-wa
 exactli
 one
 piec
@@ -2682,7 +2578,6 @@ solemn
 could
 next
 thing
-wa
 eat
 comfit
 thi
@@ -2700,7 +2595,6 @@ choke
 pat
 back
 howev
-wa
 last
 sat
 ring
@@ -2746,11 +2640,9 @@ sad
 kept
 puzzl
 mous
-wa
 speak
 idea
 tale
-wa
 someth
 like
 thi
@@ -2886,7 +2778,6 @@ stay
 sigh
 lori
 soon
-wa
 quit
 sight
 old
@@ -2937,7 +2828,6 @@ lori
 alic
 repli
 eagerli
-wa
 alway
 readi
 talk
@@ -3004,7 +2894,6 @@ variou
 pretext
 move
 alic
-wa
 soon
 left
 alon
@@ -3053,13 +2942,10 @@ half
 hope
 mous
 chang
-hi
 mind
-wa
 come
 back
 finish
-hi
 stori
 chapter
 iv
@@ -3067,7 +2953,6 @@ rabbit
 send
 littl
 bill
-wa
 white
 rabbit
 trot
@@ -3099,7 +2984,6 @@ wonder
 alic
 guess
 moment
-wa
 look
 fan
 pair
@@ -3149,7 +3033,6 @@ glove
 fan
 quick
 alic
-wa
 much
 frighten
 ran
@@ -3162,7 +3045,6 @@ explain
 mistak
 made
 took
-hi
 housemaid
 said
 ran
@@ -3172,7 +3054,6 @@ find
 id
 better
 take
-hi
 fan
 glovesthat
 find
@@ -3184,7 +3065,6 @@ neat
 littl
 hous
 door
-wa
 bright
 brass
 plate
@@ -3283,7 +3163,6 @@ took
 fan
 pair
 glove
-wa
 go
 leav
 room
@@ -3296,7 +3175,6 @@ stood
 near
 look
 glass
-wa
 label
 thi
 time
@@ -3369,7 +3247,6 @@ drunk
 quit
 much
 ala
-wa
 late
 wish
 went
@@ -3381,7 +3258,6 @@ kneel
 floor
 anoth
 minut
-wa
 even
 room
 thi
@@ -3421,7 +3297,6 @@ effect
 grew
 larger
 still
-wa
 veri
 uncomfort
 seem
@@ -3433,7 +3308,6 @@ room
 wonder
 felt
 unhappi
-wa
 much
 pleasant
 home
@@ -3557,7 +3431,6 @@ feet
 stair
 alic
 knew
-wa
 rabbit
 come
 look
@@ -3567,7 +3440,6 @@ shook
 hous
 quit
 forget
-wa
 thousand
 time
 larg
@@ -3585,7 +3457,6 @@ open
 inward
 alic
 elbow
-wa
 press
 hard
 attempt
@@ -3625,7 +3496,6 @@ crash
 broken
 glass
 conclud
-wa
 possibl
 fallen
 cucumb
@@ -3692,7 +3562,6 @@ rate
 go
 take
 away
-wa
 long
 silenc
 thi
@@ -3804,7 +3673,6 @@ head
 loud
 crashnow
 thatit
-wa
 bill
 fancywho
 go
@@ -3859,7 +3727,6 @@ anim
 couldnt
 guess
 sort
-wa
 scratch
 scrambl
 chimney
@@ -3880,7 +3747,6 @@ next
 first
 thing
 heard
-wa
 gener
 choru
 goe
@@ -3893,12 +3759,10 @@ silenc
 anoth
 confus
 voiceshold
-hi
 headbrandi
 nowdont
 choke
 himhow
-wa
 old
 fellow
 happen
@@ -3952,7 +3816,6 @@ could
 ill
 set
 dinah
-wa
 dead
 silenc
 instantli
@@ -4034,14 +3897,12 @@ suppos
 swallow
 one
 cake
-wa
 delight
 find
 began
 shrink
 directli
 soon
-wa
 small
 enough
 get
@@ -4060,7 +3921,6 @@ poor
 littl
 lizard
 bill
-wa
 middl
 held
 two
@@ -4112,11 +3972,9 @@ simpli
 arrang
 onli
 difficulti
-wa
 smallest
 idea
 set
-wa
 peer
 anxious
 among
@@ -4131,7 +3989,6 @@ great
 hurri
 enorm
 puppi
-wa
 look
 larg
 round
@@ -4152,7 +4009,6 @@ tone
 tri
 hard
 whistl
-wa
 terribl
 frighten
 time
@@ -4210,7 +4066,6 @@ get
 hold
 alic
 think
-wa
 veri
 like
 game
@@ -4266,7 +4121,6 @@ set
 onc
 ran
 till
-wa
 quit
 tire
 breath
@@ -4281,7 +4135,6 @@ yet
 dear
 littl
 puppi
-wa
 said
 alic
 leant
@@ -4321,7 +4174,6 @@ question
 great
 question
 certainli
-wa
 alic
 look
 round
@@ -4337,7 +4189,6 @@ thing
 eat
 drink
 circumst
-wa
 larg
 mushroom
 grow
@@ -4351,7 +4202,6 @@ might
 well
 look
 see
-wa
 top
 stretch
 tipto
@@ -4364,7 +4214,6 @@ met
 larg
 blue
 caterpillar
-wa
 sit
 top
 arm
@@ -4399,7 +4248,6 @@ voic
 said
 caterpillar
 thi
-wa
 encourag
 open
 convers
@@ -4414,7 +4262,6 @@ sir
 presentat
 least
 know
-wa
 got
 thi
 morn
@@ -4524,7 +4371,6 @@ first
 whi
 said
 caterpillar
-wa
 anoth
 puzzl
 question
@@ -4664,7 +4510,6 @@ youth
 father
 william
 repli
-hi
 son
 fear
 might
@@ -4694,7 +4539,6 @@ youth
 said
 sage
 shook
-hi
 grey
 lock
 kept
@@ -4726,7 +4570,6 @@ pray
 manag
 youth
 said
-hi
 father
 took
 law
@@ -4749,7 +4592,6 @@ would
 hardli
 suppos
 eye
-wa
 steadi
 ever
 yet
@@ -4765,7 +4607,6 @@ three
 question
 enough
 said
-hi
 father
 dont
 give
@@ -4797,11 +4638,9 @@ end
 said
 caterpillar
 decidedli
-wa
 silenc
 minut
 caterpillar
-wa
 first
 speak
 size
@@ -4834,7 +4673,6 @@ contradict
 life
 befor
 felt
-wa
 lose
 temper
 content
@@ -4863,7 +4701,6 @@ angrili
 rear
 upright
 spoke
-wa
 exactli
 three
 inch
@@ -4938,7 +4775,6 @@ ask
 aloud
 anoth
 moment
-wa
 sight
 alic
 remain
@@ -4950,7 +4786,6 @@ tri
 make
 two
 side
-wa
 perfectli
 round
 found
@@ -4987,7 +4822,6 @@ underneath
 chin
 struck
 foot
-wa
 good
 deal
 frighten
@@ -4996,10 +4830,8 @@ veri
 sudden
 chang
 felt
-wa
 time
 lost
-wa
 shrink
 rapidli
 set
@@ -5008,11 +4840,9 @@ onc
 eat
 bit
 chin
-wa
 press
 close
 foot
-wa
 hardli
 room
 open
@@ -5042,7 +4872,6 @@ found
 could
 see
 look
-wa
 immens
 length
 neck
@@ -5066,7 +4895,6 @@ poor
 hand
 cant
 see
-wa
 move
 spoke
 result
@@ -5087,7 +4915,6 @@ head
 tri
 get
 head
-wa
 delight
 find
 neck
@@ -5102,7 +4929,6 @@ succeed
 curv
 grace
 zigzag
-wa
 go
 dive
 among
@@ -5122,7 +4948,6 @@ larg
 pigeon
 flown
 face
-wa
 beat
 violent
 wing
@@ -5175,10 +5000,8 @@ attend
 serpent
 pleas
 alic
-wa
 puzzl
 thought
-wa
 use
 say
 anyth
@@ -5210,7 +5033,6 @@ youv
 annoy
 said
 alic
-wa
 begin
 see
 mean
@@ -5224,7 +5046,6 @@ pigeon
 rais
 voic
 shriek
-wa
 think
 free
 last
@@ -5294,7 +5115,6 @@ egg
 certainli
 said
 alic
-wa
 veri
 truth
 child
@@ -5316,11 +5136,9 @@ kind
 serpent
 say
 thi
-wa
 new
 idea
 alic
-wa
 quit
 silent
 minut
@@ -5350,7 +5168,6 @@ im
 look
 egg
 happen
-wa
 shouldnt
 want
 dont
@@ -5400,7 +5217,6 @@ succeed
 bring
 usual
 height
-wa
 long
 sinc
 anyth
@@ -5502,11 +5318,9 @@ woodsh
 consid
 footman
 becaus
-wa
 liveri
 otherwis
 judg
-hi
 face
 onli
 would
@@ -5515,9 +5329,7 @@ fishand
 rap
 loudli
 door
-hi
 knuckl
-wa
 open
 anoth
 footman
@@ -5539,7 +5351,6 @@ felt
 veri
 curiou
 know
-wa
 crept
 littl
 way
@@ -5549,7 +5360,6 @@ fish
 footman
 began
 produc
-hi
 arm
 great
 letter
@@ -5599,9 +5409,7 @@ next
 peep
 fish
 footman
-wa
 gone
-wa
 sit
 ground
 near
@@ -5637,7 +5445,6 @@ could
 possibl
 hear
 certainli
-wa
 extraordinari
 nois
 go
@@ -5672,11 +5479,9 @@ knock
 could
 let
 know
-wa
 look
 sky
 time
-wa
 speak
 thi
 alic
@@ -5687,12 +5492,10 @@ perhap
 cant
 help
 said
-hi
 eye
 veri
 nearli
 top
-hi
 head
 ani
 rate
@@ -5721,7 +5524,6 @@ straight
 footman
 head
 graze
-hi
 nose
 broke
 piec
@@ -5748,7 +5550,6 @@ footman
 first
 question
 know
-wa
 doubt
 onli
 alic
@@ -5771,7 +5572,6 @@ thi
 good
 opportun
 repeat
-hi
 remark
 variat
 shall
@@ -5803,13 +5603,11 @@ led
 right
 larg
 kitchen
-wa
 full
 smoke
 one
 end
 duchess
-wa
 sit
 three
 leg
@@ -5818,7 +5616,6 @@ middl
 nurs
 babi
 cook
-wa
 lean
 fire
 stir
@@ -5836,7 +5633,6 @@ said
 well
 could
 sneez
-wa
 certainli
 much
 air
@@ -5845,7 +5641,6 @@ duchess
 sneez
 occasion
 babi
-wa
 sneez
 howl
 altern
@@ -5859,7 +5654,6 @@ sneez
 cook
 larg
 cat
-wa
 sit
 hearth
 grin
@@ -5872,11 +5666,9 @@ said
 alic
 littl
 timidli
-wa
 quit
 sure
 whether
-wa
 good
 manner
 speak
@@ -5902,7 +5694,6 @@ jump
 saw
 anoth
 moment
-wa
 address
 babi
 took
@@ -5952,7 +5743,6 @@ well
 introduc
 subject
 convers
-wa
 tri
 fix
 one
@@ -5985,11 +5775,9 @@ notic
 even
 hit
 babi
-wa
 howl
 much
 alreadi
-wa
 quit
 imposs
 say
@@ -6006,7 +5794,6 @@ agoni
 terror
 oh
 goe
-hi
 preciou
 nose
 unusu
@@ -6074,7 +5861,6 @@ meant
 take
 hint
 cook
-wa
 busili
 stir
 soup
@@ -6186,7 +5972,6 @@ alic
 caught
 babi
 difficulti
-wa
 queer
 shape
 littl
@@ -6203,7 +5988,6 @@ alic
 poor
 littl
 thing
-wa
 snort
 like
 steam
@@ -6216,7 +6000,6 @@ altogeth
 first
 minut
 two
-wa
 much
 could
 hold
@@ -6225,7 +6008,6 @@ made
 proper
 way
 nurs
-wa
 twist
 sort
 knot
@@ -6284,7 +6066,6 @@ veri
 anxious
 face
 see
-wa
 matter
 could
 doubt
@@ -6308,7 +6089,6 @@ like
 look
 thing
 perhap
-wa
 onli
 sob
 thought
@@ -6333,13 +6113,11 @@ littl
 thing
 sob
 grunt
-wa
 imposs
 say
 went
 silenc
 alic
-wa
 begin
 think
 thi
@@ -6355,7 +6133,6 @@ thi
 time
 could
 mistak
-wa
 neither
 less
 pig
@@ -6395,7 +6172,6 @@ might
 veri
 well
 pig
-wa
 say
 one
 onli
@@ -6403,7 +6179,6 @@ knew
 right
 way
 chang
-wa
 littl
 startl
 see
@@ -6614,17 +6389,14 @@ said
 cat
 vanish
 alic
-wa
 much
 surpris
 thi
-wa
 get
 use
 queer
 thing
 happen
-wa
 look
 place
 suddenli
@@ -6665,7 +6437,6 @@ walk
 direct
 march
 hare
-wa
 said
 live
 ive
@@ -6685,12 +6456,10 @@ rave
 madat
 least
 mad
-wa
 march
 said
 thi
 look
-wa
 cat
 sit
 branch
@@ -6767,10 +6536,8 @@ shape
 like
 ear
 roof
-wa
 thatch
 fur
-wa
 larg
 hous
 like
@@ -6806,7 +6573,6 @@ vii
 mad
 tea
 parti
-wa
 tabl
 set
 tree
@@ -6817,7 +6583,6 @@ hare
 hatter
 tea
 dormous
-wa
 sit
 fast
 asleep
@@ -6839,7 +6604,6 @@ suppos
 doesnt
 mind
 tabl
-wa
 larg
 one
 three
@@ -6875,7 +6639,6 @@ alic
 look
 round
 tabl
-wa
 noth
 tea
 dont
@@ -6906,7 +6669,6 @@ march
 hare
 didnt
 know
-wa
 tabl
 said
 alic
@@ -6925,8 +6687,6 @@ time
 great
 curios
 thi
-wa
-hi
 first
 speech
 learn
@@ -6940,14 +6700,12 @@ veri
 rude
 hatter
 open
-hi
 eye
 veri
 wide
 hear
 thi
 said
-wa
 whi
 raven
 like
@@ -7026,7 +6784,6 @@ ad
 dormous
 seem
 talk
-hi
 sleep
 ‘
 breath
@@ -7054,7 +6811,6 @@ desk
 wasnt
 much
 hatter
-wa
 first
 break
 silenc
@@ -7064,17 +6820,13 @@ said
 turn
 alic
 taken
-hi
 watch
-hi
 pocket
-wa
 look
 uneasili
 shake
 everi
 hold
-hi
 ear
 alic
 consid
@@ -7096,7 +6848,6 @@ look
 angrili
 march
 hare
-wa
 best
 butter
 march
@@ -7121,7 +6872,6 @@ watch
 look
 gloomili
 dip
-hi
 cup
 tea
 look
@@ -7130,16 +6880,13 @@ think
 noth
 better
 say
-hi
 first
 remark
-wa
 best
 butter
 know
 alic
 look
-hi
 shoulder
 curios
 funni
@@ -7183,7 +6930,6 @@ seem
 sort
 mean
 yet
-wa
 certainli
 english
 dont
@@ -7212,7 +6958,6 @@ open
 eye
 cours
 cours
-wa
 go
 remark
 guess
@@ -7265,7 +7010,6 @@ dont
 hatter
 said
 toss
-hi
 head
 contemptu
 dare
@@ -7323,7 +7067,6 @@ time
 dinner
 onli
 wish
-wa
 march
 hare
 said
@@ -7355,7 +7098,6 @@ alic
 ask
 hatter
 shook
-hi
 head
 mourn
 repli
@@ -7367,12 +7109,10 @@ went
 mad
 know
 point
-hi
 tea
 spoon
 march
 hare
-wa
 great
 concert
 given
@@ -7438,7 +7178,6 @@ bawl
 ‘
 murder
 time
-hi
 head
 dread
 savag
@@ -7534,7 +7273,6 @@ onc
 dormous
 slowli
 open
-hi
 eye
 wasnt
 asleep
@@ -7686,12 +7424,10 @@ minut
 two
 think
 said
-wa
 treacl
 well
 thing
 alic
-wa
 begin
 veri
 angrili
@@ -7775,7 +7511,6 @@ place
 march
 hare
 hatter
-wa
 onli
 one
 got
@@ -7783,7 +7518,6 @@ ani
 advantag
 chang
 alic
-wa
 good
 deal
 wors
@@ -7793,7 +7527,6 @@ hare
 upset
 milk
 jug
-hi
 plate
 alic
 wish
@@ -7850,7 +7583,6 @@ went
 yawn
 rub
 eye
-wa
 get
 veri
 sleepi
@@ -7866,14 +7598,12 @@ said
 march
 hare
 alic
-wa
 silent
 dormous
 close
 eye
 thi
 time
-wa
 go
 doze
 pinch
@@ -7914,7 +7644,6 @@ hatter
 thi
 piec
 rude
-wa
 alic
 could
 bear
@@ -7961,7 +7690,6 @@ stupidest
 tea
 parti
 ever
-wa
 life
 said
 thi
@@ -8014,7 +7742,6 @@ kept
 piec
 pocket
 till
-wa
 foot
 high
 walk
@@ -8110,14 +7837,12 @@ two
 said
 seven
 ye
-hi
 busi
 said
 five
 ill
 tell
 himit
-wa
 bring
 cook
 tulip
@@ -8126,13 +7851,11 @@ instead
 onion
 seven
 flung
-hi
 brush
 begun
 well
 unjust
 thing
-hi
 eye
 chanc
 fall
@@ -8180,7 +7903,6 @@ white
 one
 mistak
 queen
-wa
 find
 head
 cut
@@ -8208,7 +7930,6 @@ themselv
 flat
 upon
 face
-wa
 sound
 mani
 footstep
@@ -8268,14 +7989,12 @@ alic
 recognis
 white
 rabbit
-wa
 talk
 hurri
 nervou
 manner
 smile
 everyth
-wa
 said
 went
 without
@@ -8298,7 +8017,6 @@ king
 queen
 heart
 alic
-wa
 rather
 doubt
 whether
@@ -8327,7 +8045,6 @@ couldnt
 see
 stood
 still
-wa
 wait
 process
 came
@@ -8387,7 +8104,6 @@ lie
 face
 pattern
 back
-wa
 rest
 pack
 could
@@ -8423,11 +8139,9 @@ veri
 loudli
 decidedli
 queen
-wa
 silent
 king
 laid
-hi
 hand
 upon
 arm
@@ -8546,7 +8260,6 @@ silent
 look
 alic
 question
-wa
 evid
 meant
 ye
@@ -8572,11 +8285,9 @@ said
 timid
 voic
 side
-wa
 walk
 white
 rabbit
-wa
 peep
 anxious
 face
@@ -8593,14 +8304,12 @@ hurri
 tone
 look
 anxious
-hi
 shoulder
 spoke
 rais
 upon
 tipto
 put
-hi
 mouth
 close
 ear
@@ -8672,7 +8381,6 @@ curiou
 croquet
 ground
 life
-wa
 ridg
 furrow
 ball
@@ -8694,7 +8402,6 @@ difficulti
 alic
 found
 first
-wa
 manag
 flamingo
 succeed
@@ -8712,7 +8419,6 @@ got
 neck
 nice
 straighten
-wa
 go
 give
 hedgehog
@@ -8731,22 +8437,18 @@ burst
 laugh
 got
 head
-wa
 go
 begin
-wa
 veri
 provok
 find
 hedgehog
 unrol
-wa
 act
 crawl
 away
 besid
 thi
-wa
 gener
 ridg
 furrow
@@ -8766,7 +8468,6 @@ alic
 soon
 came
 conclus
-wa
 veri
 difficult
 game
@@ -8784,13 +8485,11 @@ veri
 short
 time
 queen
-wa
 furiou
 passion
 went
 stamp
 shout
-hi
 head
 head
 onc
@@ -8824,7 +8523,6 @@ ani
 one
 left
 aliv
-wa
 look
 way
 escap
@@ -8858,7 +8556,6 @@ get
 said
 cat
 soon
-wa
 mouth
 enough
 speak
@@ -8895,7 +8592,6 @@ listen
 cat
 seem
 think
-wa
 enough
 sight
 appear
@@ -8958,7 +8654,6 @@ alic
 extrem
 notic
 queen
-wa
 close
 behind
 listen
@@ -9035,7 +8730,6 @@ veri
 decidedli
 call
 queen
-wa
 pass
 moment
 dear
@@ -9052,7 +8746,6 @@ settl
 difficulti
 great
 small
-hi
 head
 said
 without
@@ -9074,7 +8767,6 @@ go
 back
 see
 game
-wa
 go
 heard
 queen
@@ -9094,18 +8786,15 @@ like
 look
 thing
 game
-wa
 confus
 never
 knew
 whether
-wa
 turn
 went
 search
 hedgehog
 hedgehog
-wa
 engag
 fight
 anoth
@@ -9118,9 +8807,7 @@ croquet
 one
 onli
 difficulti
-wa
 flamingo
-wa
 gone
 across
 side
@@ -9140,7 +8827,6 @@ flamingo
 brought
 back
 fight
-wa
 hedgehog
 sight
 doesnt
@@ -9167,7 +8853,6 @@ got
 back
 cheshir
 cat
-wa
 surpris
 find
 quit
@@ -9175,7 +8860,6 @@ larg
 crowd
 collect
 round
-wa
 disput
 go
 execution
@@ -9192,7 +8876,6 @@ uncomfort
 moment
 alic
 appear
-wa
 appeal
 three
 settl
@@ -9211,12 +8894,10 @@ exactli
 said
 execution
 argument
-wa
 couldnt
 cut
 head
 unless
-wa
 bodi
 cut
 never
@@ -9225,12 +8906,10 @@ befor
 wasnt
 go
 begin
-hi
 time
 life
 king
 argument
-wa
 anyth
 head
 could
@@ -9240,7 +8919,6 @@ talk
 nonsens
 queen
 argument
-wa
 someth
 wasnt
 done
@@ -9250,7 +8928,6 @@ shed
 everybodi
 execut
 round
-wa
 thi
 last
 remark
@@ -9286,7 +8963,6 @@ began
 fade
 away
 moment
-wa
 gone
 time
 come
@@ -9325,7 +9001,6 @@ alic
 walk
 togeth
 alic
-wa
 veri
 glad
 find
@@ -9333,7 +9008,6 @@ pleasant
 temper
 thought
 perhap
-wa
 onli
 pepper
 made
@@ -9395,7 +9069,6 @@ forgotten
 duchess
 thi
 time
-wa
 littl
 startl
 heard
@@ -9443,12 +9116,10 @@ close
 first
 becaus
 duchess
-wa
 veri
 ugli
 secondli
 becaus
-wa
 exactli
 right
 height
@@ -9457,7 +9128,6 @@ chin
 upon
 alic
 shoulder
-wa
 uncomfort
 sharp
 chin
@@ -9637,7 +9307,6 @@ otherwis
 might
 appear
 might
-wa
 otherwis
 would
 appear
@@ -9711,7 +9380,6 @@ think
 said
 alic
 sharpli
-wa
 begin
 feel
 littl
@@ -9736,7 +9404,6 @@ word
 ‘
 moral
 arm
-wa
 link
 began
 trembl
@@ -9776,7 +9443,6 @@ choic
 duchess
 took
 choic
-wa
 gone
 moment
 let
@@ -9786,7 +9452,6 @@ queen
 said
 alic
 alic
-wa
 much
 frighten
 say
@@ -9825,7 +9490,6 @@ left
 quarrel
 player
 shout
-hi
 head
 head
 sentenc
@@ -9885,7 +9549,6 @@ said
 queen
 shall
 tell
-hi
 histori
 walk
 togeth
@@ -9935,7 +9598,6 @@ see
 mock
 turtl
 hear
-hi
 histori
 must
 go
@@ -9970,7 +9632,6 @@ eye
 watch
 queen
 till
-wa
 sight
 chuckl
 fun
@@ -10000,7 +9661,6 @@ alic
 went
 slowli
 never
-wa
 order
 life
 never
@@ -10023,13 +9683,11 @@ alic
 could
 hear
 sigh
-hi
 heart
 would
 break
 piti
 deepli
-hi
 sorrow
 ask
 gryphon
@@ -10039,7 +9697,6 @@ veri
 nearli
 word
 befor
-hi
 fanci
 hasnt
 got
@@ -10100,7 +9757,6 @@ turtl
 last
 deep
 sigh
-wa
 real
 turtl
 word
@@ -10120,7 +9776,6 @@ sob
 mock
 turtl
 alic
-wa
 veri
 nearli
 get
@@ -10152,7 +9807,6 @@ went
 school
 sea
 master
-wa
 old
 turtlew
 use
@@ -10301,7 +9955,6 @@ onli
 took
 regular
 cours
-wa
 inquir
 alic
 reel
@@ -10359,14 +10012,12 @@ said
 els
 learn
 well
-wa
 mysteri
 mock
 turtl
 repli
 count
 subject
-hi
 flapper
 mysteri
 ancient
@@ -10375,7 +10026,6 @@ seaographi
 drawlingth
 drawl
 master
-wa
 old
 conger
 eel
@@ -10389,7 +10039,6 @@ drawl
 stretch
 faint
 coil
-wa
 like
 said
 alic
@@ -10412,10 +10061,8 @@ went
 classic
 master
 though
-wa
 old
 crab
-wa
 never
 went
 mock
@@ -10430,7 +10077,6 @@ say
 said
 gryphon
 sigh
-hi
 turn
 creatur
 hid
@@ -10469,7 +10115,6 @@ lessen
 day
 day
 thi
-wa
 quit
 new
 idea
@@ -10485,7 +10130,6 @@ day
 must
 holiday
 cours
-wa
 said
 mock
 turtl
@@ -10517,7 +10161,6 @@ back
 one
 flapper
 across
-hi
 eye
 look
 alic
@@ -10527,10 +10170,8 @@ minut
 two
 sob
 choke
-hi
 voic
 bone
-hi
 throat
 said
 gryphon
@@ -10543,11 +10184,9 @@ last
 mock
 turtl
 recov
-hi
 voic
 tear
 run
-hi
 cheek
 went
 may
@@ -10666,7 +10305,6 @@ mock
 turtl
 suddenli
 drop
-hi
 voic
 two
 creatur
@@ -10815,7 +10453,6 @@ danc
 matter
 far
 go
-hi
 scali
 friend
 repli
@@ -10853,7 +10490,6 @@ alic
 feel
 veri
 glad
-wa
 last
 like
 curiou
@@ -10914,7 +10550,6 @@ mock
 turtl
 yawn
 shut
-hi
 eye
 tell
 reason
@@ -10970,7 +10605,6 @@ repli
 veri
 solemnli
 alic
-wa
 thoroughli
 puzzl
 doe
@@ -11070,7 +10704,6 @@ whi
 fish
 came
 told
-wa
 go
 journey
 say
@@ -11109,7 +10742,6 @@ go
 back
 yesterday
 becaus
-wa
 differ
 person
 explain
@@ -11135,7 +10767,6 @@ first
 saw
 white
 rabbit
-wa
 littl
 nervou
 first
@@ -11223,13 +10854,11 @@ got
 began
 repeat
 head
-wa
 full
 lobster
 quadril
 hardli
 knew
-wa
 say
 word
 came
@@ -11248,15 +10877,11 @@ sugar
 hair
 duck
 eyelid
-hi
 nose
 trim
-hi
 belt
-hi
 button
 turn
-hi
 toe
 later
 edit
@@ -11274,7 +10899,6 @@ tide
 rise
 shark
 around
-hi
 voic
 ha
 timid
@@ -11283,7 +10907,6 @@ sound
 differ
 use
 say
-wa
 child
 said
 gryphon
@@ -11323,14 +10946,12 @@ hastili
 go
 next
 vers
-hi
 toe
 mock
 turtl
 persist
 could
 turn
-hi
 nose
 know
 first
@@ -11338,7 +10959,6 @@ posit
 danc
 alic
 said
-wa
 dread
 puzzl
 whole
@@ -11355,7 +10975,6 @@ impati
 begin
 ‘
 pass
-hi
 garden
 alic
 dare
@@ -11370,7 +10989,6 @@ went
 trembl
 voic
 pass
-hi
 garden
 mark
 one
@@ -11394,7 +11012,6 @@ dish
 share
 treat
 pie
-wa
 finish
 owl
 boon
@@ -11432,7 +11049,6 @@ leav
 said
 gryphon
 alic
-wa
 onli
 glad
 shall
@@ -11550,7 +11166,6 @@ repeat
 cri
 trial
 begin
-wa
 heard
 distanc
 come
@@ -11609,7 +11224,6 @@ whole
 pack
 card
 knave
-wa
 stand
 befor
 chain
@@ -11618,7 +11232,6 @@ side
 guard
 near
 king
-wa
 white
 rabbit
 trumpet
@@ -11629,7 +11242,6 @@ parchment
 veri
 middl
 court
-wa
 tabl
 larg
 dish
@@ -11668,7 +11280,6 @@ justic
 befor
 read
 book
-wa
 quit
 pleas
 find
@@ -11679,15 +11290,12 @@ everyth
 judg
 said
 becaus
-hi
 great
 wig
 judg
 way
-wa
 king
 wore
-hi
 crown
 wig
 look
@@ -11696,7 +11304,6 @@ want
 see
 look
 comfort
-wa
 certainli
 becom
 juri
@@ -11705,7 +11312,6 @@ thought
 alic
 twelv
 creatur
-wa
 oblig
 say
 creatur
@@ -11781,13 +11387,11 @@ silenc
 court
 king
 put
-hi
 spectacl
 look
 anxious
 round
 make
-wa
 talk
 alic
 could
@@ -11809,7 +11413,6 @@ know
 spell
 stupid
 ask
-hi
 neighbour
 tell
 nice
@@ -11843,14 +11446,12 @@ quickli
 poor
 littl
 juror
-wa
 bill
 lizard
 could
 make
 becom
 hunt
-wa
 oblig
 write
 one
@@ -11858,7 +11459,6 @@ finger
 rest
 day
 thi
-wa
 veri
 littl
 use
@@ -11925,7 +11525,6 @@ first
 wit
 first
 wit
-wa
 hatter
 came
 teacup
@@ -11943,7 +11542,6 @@ hadnt
 quit
 finish
 tea
-wa
 sent
 ought
 finish
@@ -11962,7 +11560,6 @@ dormous
 fourteenth
 march
 think
-wa
 said
 fifteenth
 said
@@ -12042,12 +11639,10 @@ foot
 look
 uneasili
 queen
-hi
 confus
 bit
 larg
 piec
-hi
 teacup
 instead
 bread
@@ -12063,8 +11658,6 @@ puzzl
 good
 deal
 made
-wa
-wa
 begin
 grow
 larger
@@ -12078,16 +11671,13 @@ second
 thought
 decid
 remain
-wa
 long
-wa
 room
 wish
 wouldnt
 squeez
 said
 dormous
-wa
 sit
 next
 hardli
@@ -12150,7 +11740,6 @@ wretch
 hatter
 trembl
 shook
-hi
 shoe
 give
 evid
@@ -12266,7 +11855,6 @@ execut
 miser
 hatter
 drop
-hi
 teacup
 bread
 butter
@@ -12287,7 +11875,6 @@ one
 guinea
 pig
 cheer
-wa
 immedi
 suppress
 offic
@@ -12296,7 +11883,6 @@ rather
 hard
 word
 explain
-wa
 done
 larg
 canva
@@ -12325,10 +11911,8 @@ read
 newspap
 end
 trial
-wa
 attempt
 applaus
-wa
 immedi
 suppress
 offic
@@ -12356,7 +11940,6 @@ repli
 guinea
 pig
 cheer
-wa
 suppress
 come
 finish
@@ -12376,7 +11959,6 @@ hatter
 anxiou
 look
 queen
-wa
 read
 list
 singer
@@ -12392,10 +11974,8 @@ without
 even
 wait
 put
-hi
 shoe
 take
-hi
 head
 outsid
 queen
@@ -12403,7 +11983,6 @@ ad
 one
 offic
 hatter
-wa
 sight
 befor
 offic
@@ -12417,7 +11996,6 @@ said
 king
 next
 wit
-wa
 duchesss
 cook
 carri
@@ -12426,7 +12004,6 @@ box
 hand
 alic
 guess
-wa
 even
 befor
 got
@@ -12467,12 +12044,10 @@ said
 melancholi
 air
 fold
-hi
 arm
 frown
 cook
 till
-hi
 eye
 nearli
 sight
@@ -12501,12 +12076,10 @@ dormous
 court
 suppress
 pinch
-hi
 whisker
 minut
 whole
 court
-wa
 confus
 get
 dormous
@@ -12565,7 +12138,6 @@ white
 rabbit
 read
 top
-hi
 shrill
 littl
 voic
@@ -12666,7 +12238,6 @@ downward
 poor
 littl
 thing
-wa
 wave
 tail
 melancholi
@@ -12781,7 +12352,6 @@ alic
 could
 see
 thi
-wa
 near
 enough
 look
@@ -12796,13 +12366,11 @@ king
 time
 busili
 write
-hi
 note
 book
 cackl
 silenc
 read
-hi
 book
 rule
 forti
@@ -12853,7 +12421,6 @@ king
 turn
 pale
 shut
-hi
 note
 book
 hastili
@@ -12897,7 +12464,6 @@ must
 said
 king
 unless
-wa
 written
 nobodi
 isnt
@@ -12976,12 +12542,10 @@ name
 like
 honest
 man
-wa
 gener
 clap
 hand
 thi
-wa
 first
 realli
 clever
@@ -12990,7 +12554,6 @@ king
 said
 day
 prove
-hi
 guilt
 said
 queen
@@ -13010,7 +12573,6 @@ king
 white
 rabbit
 put
-hi
 spectacl
 shall
 begin
@@ -13068,7 +12630,6 @@ set
 free
 exactli
 notion
-wa
 befor
 thi
 fit
@@ -13095,7 +12656,6 @@ yet
 said
 king
 rub
-hi
 hand
 let
 juri
@@ -13147,7 +12707,6 @@ know
 went
 spread
 vers
-hi
 knee
 look
 one
@@ -13165,7 +12724,6 @@ turn
 knave
 knave
 shook
-hi
 head
 sadli
 look
@@ -13233,7 +12791,6 @@ littl
 bill
 left
 write
-hi
 slate
 one
 finger
@@ -13244,9 +12801,7 @@ hastili
 began
 use
 ink
-wa
 trickl
-hi
 face
 long
 last
@@ -13259,7 +12814,6 @@ look
 round
 court
 smile
-wa
 dead
 silenc
 pun
@@ -13341,7 +12895,6 @@ bank
 head
 lap
 sister
-wa
 gentli
 brush
 away
@@ -13378,7 +12931,6 @@ finish
 sister
 kiss
 said
-wa
 curiou
 dream
 dear
@@ -13416,7 +12968,6 @@ began
 dream
 fashion
 thi
-wa
 dream
 first
 dream
@@ -13476,7 +13027,6 @@ byth
 frighten
 mous
 splash
-hi
 way
 neighbour
 poolsh
@@ -13486,7 +13036,6 @@ rattl
 teacup
 march
 hare
-hi
 friend
 share
 never
@@ -13501,7 +13050,6 @@ guest
 executiononc
 pig
 babi
-wa
 sneez
 duchesss
 knee
