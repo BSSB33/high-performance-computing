@@ -23,12 +23,13 @@ def export_sentences(path, sentences):
 def process_sentence(sentences):
     processed_sentences = []
     for sentence in sentences:
-        sentence = sentence.replace("-", " ")                           #Removing normal dash-es
-        sentence = sentence.replace(" . . . ", " ").replace("...", " ") #Removing special characters  
-        sentence = re.sub('^\s*$', '', sentence)                        #Removing empty lines
-        sentence = re.sub('[' + string.punctuation + ']', '', sentence) #Removing punctuation
-        sentence = re.sub('[“”’—\\|\/]*', '', sentence)                 #Removing special characters
-        sentence = re.sub("^\s+|\s+$", '', sentence, flags=re.UNICODE)  #Removing whitespaces at the beginning and end of the sentence
+        sentence = sentence.replace("-", " ")                                       #Removing normal dash-es
+        sentence = sentence.replace(" . . . ", " ").replace("...", " ")             #Removing special characters  
+        sentence = re.sub('^\s*$', '', sentence)                                    #Removing empty lines
+        sentence = re.sub('[' + string.punctuation + ']', '', sentence)             #Removing punctuation
+        sentence = re.sub('[“”’—\\|\/]*', '', sentence)                             #Removing special characters
+        sentence = re.sub("^\s+|\s+$", '', sentence, flags=re.UNICODE)              #Removing whitespaces at the beginning and end of the sentence
+        sentence = ' '.join([word for word in sentence.split() if len(word) <= 25]) #Removing long words
         if(sentence != ""):
             processed_sentences.append(sentence)
     return processed_sentences
@@ -36,7 +37,7 @@ def process_sentence(sentences):
 def tokenize_sentences(sentences, stemming=False):
     tokenized_sentences = []
     stopwords_english = stopwords.words('english')
-    conjunctions  = ["I", "so", "a", "the", "to", "of", "his", "her", "was", "in", "had", "you", "he", "she", "it", "is", "as", "with", "be", "have", "at", "on"]
+    conjunctions  = ["I", "so", "a", "and", "the", "to", "of", "his", "her", "was", "in", "had", "you", "he", "she", "it", "is", "as", "with", "be", "have", "at", "on"]
     stemmer = PorterStemmer()
 
     for sentence in sentences:

@@ -40,7 +40,7 @@ typedef struct
 
 const int READ_BY_WORDS = 0;
 const int READ_BY_SENTENCES = 1;
-const int STRING_MAX = 100000;
+const int STRING_MAX = 10000000;//100000;
 
 void add_item_to_dict(struct dict_item_hh **dict, char *word)
 {
