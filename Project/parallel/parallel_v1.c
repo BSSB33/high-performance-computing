@@ -277,7 +277,7 @@ int main(int argc, char **argv)
 
         struct dict_item_hh *MASTER_DICT = NULL;
 
-        /* char buf[STRING_MAX];
+        char buf[STRING_MAX];
         int start = my_rank * LINES_PER_PROCESS + 1;
         int end = start + LINES_PER_PROCESS - 1;
         printf("start: %d - end: %d\n", start, end);
@@ -287,7 +287,7 @@ int main(int argc, char **argv)
         {
             add_item_to_dict(&MASTER_DICT, word);
             word = strtok(NULL, " \t\r\n\v\f");
-        } */
+        } 
 
         unsigned int dic_len[comm_sz];
         unsigned int i, j;
