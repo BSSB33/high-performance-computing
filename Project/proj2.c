@@ -8,6 +8,9 @@ const int MAX_STRING = 100000;
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <err.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <math.h>
  
 /* following code assumes all file operations succeed. In practice,
  * return codes from open, close, fstat, mmap, munmap all need to be
@@ -31,21 +34,6 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
  
 	fd = open(path, O_RDONLY);
 	fstat(fd, &s);
-
-	if (fd == -1) {
-		warn("open");
-		printf("%s\n", path);
-		return 0;
-	}
-
-	if (fd == NULL) {
-		warn("Failed to open file");
-		return 0;
-	}
-	if (s.st_size == 0) {
-		warn("File is empty");
-		return 0;
-	}
  
 	/* Map the whole file.  If the file is huge (up to GBs), OS will swap
 	 * pages in and out, and because search for lines goes sequentially
@@ -62,7 +50,6 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
 	//madvise(buf, s.st_size, MADV_SEQUENTIAL);
 
     int line_count = (end_line_no - line_no) - 1;
-	printf("line_count: %d\n", line_count);
 	for (i = ln = 0; i < s.st_size && ln <= line_no + line_count; i++) {
 		if (buf[i] != '\n') continue;
 
@@ -84,7 +71,6 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
                 }
                 else {
 					strncpy(output, buf + start, end - start);
-					
 					ret = 0;
                 }
         }       
@@ -95,42 +81,34 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
 	return ret;
 }
 
-struct node {
-	char word[25];	//key
-	int nr;			//value
-};
 
 int main(void) { 
-		char *filename = "./alice/alice_sentences.txt";
-		//char *filename = "/home/gabor.vitrai/proj/got/got_sentences.txt";
+		//char *filename = "/home/gabor.vitrai/proj/alice/alice_sentences.txt";
         int comm_sz; /* Number of processes */ 
         int my_rank; /* My process rank */ 
 
         MPI_Init(NULL, NULL); 
         MPI_Comm_size(MPI_COMM_WORLD, &comm_sz); 
-        MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+		MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+
+		struct node {
+			char word[25];	//key
+			int nr;			//value
+		};
 
 		
-/* 		struct node s;
-
+		const int nitems = 2;
+		int blocklengths[2] = {25,1};
+		MPI_Datatype types[2] = {MPI_CHAR, MPI_INT};
 		MPI_Datatype DictType;
-			MPI_Datatype type[2] = {MPI_INT, MPI_CHAR};
-			int blocklen[2] = {1, 25};
-			MPI_Aint disp[2];
-			MPI_Aint nr_addr, w_addr;
-			MPI_Get_address(&s.nr, &nr_addr);
-			MPI_Get_address(&s.word, &w_addr);
-			disp[0] = 0;
-			disp[1] = w_addr - nr_addr;
-			MPI_Type_create_struct(2, blocklen, disp, type, &DictType);
-			MPI_Type_commit(&DictType); */
+		MPI_Aint offsets[2];
+		offsets[0] = offsetof(struct node, word);
+		offsets[1] = offsetof(struct node, nr);
+		MPI_Type_create_struct(nitems, blocklengths, offsets, types, &DictType);
+		MPI_Type_commit(&DictType);
 
         if (my_rank == 0) { // Main
-
-			char *line;
-			read_file_line(filename, 1, 10, line);
-			printf("%s\n", line);
-/* 
+			printf("%f\n", ceil(0.4));
 			struct node data[5] = {{"alice", 5}, {"bob", 10}, {"charlie", 15}, {"david", 20}, {"eve", 25}};
 
 			int size = sizeof(data) / sizeof(data[0]);
@@ -138,25 +116,24 @@ int main(void) {
 				MPI_Send(&size, sizeof(size), MPI_INT, q, 0, MPI_COMM_WORLD); 
 				printf("MAIN: Process %d - Sending size count: %d, to process %d\n", my_rank, size, q);
 				
+				//MPI_Send(&data, sizeof(data), MPI_BYTE, q, 0, MPI_COMM_WORLD);
+
 				MPI_Send(&data, size, DictType, q, 0, MPI_COMM_WORLD);
 				printf("MAIN: Process %d - Sending struct to process %d\n", my_rank, q);
-			} */
+			}
         } 
         else { // Childs
-/* 		
+		
 			int size;
 			MPI_Recv(&size, sizeof(size), MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE); 
             printf("CHILD: Process %d - Size recieved: %d!\n", my_rank, size);
 
 			struct node data[size];
+
+			//MPI_Recv(&data, sizeof(data), MPI_BYTE, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE); 
 			MPI_Recv(&data, size, DictType, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE); 
-			pr intf("CHILD: Process %d - Struct recieved from:\n", my_rank);*/
+			printf("CHILD: Process %d - Struct recieved! %d. word: %s\n", my_rank, my_rank-1, data[my_rank-1].word);
         }
         MPI_Finalize(); 
         return 0; 
 } /* main */
-
-// Problems:
-// 1. We can not save method output to varibale
-// 2. Child rank is always 4
-// 3. Big text input is still not working perfectly
