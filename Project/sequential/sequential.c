@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <sys/time.h>
 #include "../headers/uthash.h"
 
 struct dict_item
@@ -81,16 +81,19 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
+    printf("\n---Running serial version with input: %s\n", argv[1]);
+
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
     size_t read;
-    timeval t1, t2;
+    struct timeval t1, t2;
     gettimeofday(&t1, NULL);
 
     fp = fopen(argv[1], "r");
     if (fp == NULL)
     {
+        printf("Failed to open file\n");
         exit(EXIT_FAILURE);
     }
 
@@ -101,18 +104,18 @@ int main(int argc, char *argv[])
     }
     else
     {
-        char last_word[20];
+        // char last_word[20];
         while ((read = getline(&line, &len, fp)) != -1)
         {
             char *word = strtok(line, " \t\r\n\v\f");
             while (word)
             {
                 add_item(word);
-                strcpy(last_word, word);
+                // strcpy(last_word, word);
                 word = strtok(NULL, " \t\r\n\v\f");
             }
         }
-        printf("last word: %s\n", last_word);
+        // printf("last word: %s\n", last_word);
     }
 
     sort_by_nr();
@@ -125,6 +128,8 @@ int main(int argc, char *argv[])
 
     fclose(fp);
     free(line);
+
+    printf("\nProgram exiting...\n\n");
 
     return 0;
 }

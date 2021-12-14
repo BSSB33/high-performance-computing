@@ -40,7 +40,7 @@ typedef struct
 
 const int READ_BY_WORDS = 0;
 const int READ_BY_SENTENCES = 1;
-const int STRING_MAX = 10000;
+const int STRING_MAX = 10000000;
 
 void add_item_to_dict(struct dict_item_hh **dict, char *word)
 {
@@ -106,13 +106,12 @@ void sort_by_nr(struct dict_item_hh **dict)
  * return codes from open, close, fstat, mmap, munmap all need to be
  * checked for error.
 */
-int read_file_line(const char *path, int line_no, char *output)
+int read_file_line(int fd, struct stat s, int line_no, char *output)
 {
-	struct stat s;
 	char *buf;
 	off_t start = -1, end = -1;
 	size_t i;
-	int ln, fd, ret = 1;
+	int ln, ret = 1;
  
 	if (line_no == 1) start = 0;
 	else if (line_no < 1){
@@ -121,9 +120,6 @@ int read_file_line(const char *path, int line_no, char *output)
 	}
  
 	line_no--; /* back to zero based, easier */
- 
-	fd = open(path, O_RDONLY);
-	fstat(fd, &s);
  
 	/* Map the whole file.  If the file is huge (up to GBs), OS will swap
 	 * pages in and out, and because search for lines goes sequentially
@@ -216,6 +212,11 @@ int main(int argc, char **argv)
     MPI_Type_create_struct(2, blocklen, disp, type, &DictType);
     MPI_Type_commit(&DictType);
 
+    int fd;
+    struct stat st;
+    fd = open(argv[1], O_RDONLY);
+    fstat(fd, &st);
+
     if (my_rank != 0) // Childs
     {
         struct dict_item_hh *small_dict = NULL;
@@ -229,11 +230,11 @@ int main(int argc, char **argv)
         else {
             end = NR_OF_LINES;
         }
-        //printf("start: %d - end: %d - length: %d\n", start, end, end - start);
+        printf("start: %d - end: %d - length: %d\n", start, end, end - start);
         
         for (int i = start; i <= end; i++)
         {
-            read_file_line(argv[1], i, buf);
+            read_file_line(fd, st, i, buf);
             char *word = strtok(buf, " \t\r\n\v\f");
 
             while (word)
@@ -241,6 +242,7 @@ int main(int argc, char **argv)
                 add_item_to_dict(&small_dict, word);
                 word = strtok(NULL, " \t\r\n\v\f");
             }
+            printf("%d process reading them lines %d\n", my_rank, i);
         }
 
         //Sening the length of the small dictionary
@@ -274,7 +276,7 @@ int main(int argc, char **argv)
         
         for (int i = start; i <= end; i++)
         {
-            read_file_line(argv[1], i, buf);
+            read_file_line(fd, st, i, buf);
             char *word = strtok(buf, " \t\r\n\v\f");
 
             while (word)

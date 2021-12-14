@@ -40,8 +40,14 @@ typedef struct
 
 const int READ_BY_WORDS = 0;
 const int READ_BY_SENTENCES = 1;
-const int STRING_MAX = 100000;
+const int STRING_MAX = 10000000;
 
+/**
+ * @brief Add word to dictionary 
+ * 
+ * @param dict 
+ * @param word 
+ */
 void add_item_to_dict(struct dict_item_hh **dict, char *word)
 {
     struct dict_item_hh *s;
@@ -59,6 +65,13 @@ void add_item_to_dict(struct dict_item_hh **dict, char *word)
     }
 }
 
+/**
+ * @brief Modified version of previous function, to account for number of already existing words
+ * 
+ * @param master_dict 
+ * @param word 
+ * @param nr 
+ */
 void add_item_to_master_dict(struct dict_item_hh **master_dict, char *word, int nr)
 {
     struct dict_item_hh *s;
@@ -137,9 +150,6 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
 	 */
     buf = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
-    /* optional; if the file is large, tell OS to read ahead */
-    //madvise(buf, s.st_size, MADV_SEQUENTIAL);
-
     int line_count = (end_line_no - line_no) - 1;
     for (i = ln = 0; i < s.st_size && ln <= line_no + line_count; i++)
     {
@@ -188,23 +198,6 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
-    // FILE *fp;
-
-    // struct dict_item_hh *my_dict = NULL;
-
-    // fp = fopen(argv[1], "r");
-    // if (fp == NULL)
-    // {
-    //     exit(EXIT_FAILURE);
-    // }
-
-    // int FILE_MODE = atoi(argv[2]);
-    // if (FILE_MODE != READ_BY_SENTENCES || FILE_MODE != READ_BY_WORDS)
-    // {
-    //     printf("%d\n", FILE_MODE);
-
-    //     exit(EXIT_FAILURE);
-    // }
 
     int NR_OF_LINES = atoi(argv[3]);
 
@@ -235,8 +228,10 @@ int main(int argc, char **argv)
 
     if (my_rank != 0)
     {
+        // Creating local dict
         struct dict_item_hh *small_dict = NULL;
         char buf[STRING_MAX];
+        // start and end points for processing corresponding input chunk of file
         int start = my_rank * LINES_PER_PROCESS + 1;
         int end;
         if (my_rank < comm_sz - 1)
@@ -246,21 +241,19 @@ int main(int argc, char **argv)
         else {
             end = NR_OF_LINES;
         }
-        printf("start: %d - end: %d - length: %d\n", start, end, end - start);
-        // printf("start: %d\n", start);
+        // get lines to process and create local dict from them
         read_file_line(argv[1], start, end, buf);
         char *word = strtok(buf, " \t\r\n\v\f");
-        // char last_word[20];
         while (word)
         {
             add_item_to_dict(&small_dict, word);
-            // strcpy(last_word, word);
             word = strtok(NULL, " \t\r\n\v\f");
         }
-        // printf("last word: %s\n", last_word);
+        // send local dict size to main process
         unsigned int small_dict_len = HASH_COUNT(small_dict);
         MPI_Send(&small_dict_len, 1, MPI_UNSIGNED, 0, 0, MPI_COMM_WORLD);
         struct dict_item_hh *s;
+        // for all dict elements, create a custom datatype struct and send it to the main process
         for (s = small_dict; s != NULL; s = (struct dict_item_hh *)(s->hh.next))
         {
             struct dict_item k;
@@ -268,19 +261,19 @@ int main(int argc, char **argv)
             strcpy(k.word, s->word);
             MPI_Send(&k, 1, DictType, 0, 0, MPI_COMM_WORLD);
         }
-        // printf("Finalized sending dict\n");
     }
     else
     {
         struct timeval t1, t2;
         gettimeofday(&t1, NULL);
 
+        // Initializing master dictionary
         struct dict_item_hh *MASTER_DICT = NULL;
 
         char buf[STRING_MAX];
+        // Processing the first batch of input
         int start = my_rank * LINES_PER_PROCESS + 1;
         int end = start + LINES_PER_PROCESS - 1;
-        printf("start: %d - end: %d\n", start, end);
         read_file_line(argv[1], start, end, buf);
         char *word = strtok(buf, " \t\r\n\v\f");
         while (word)
@@ -291,13 +284,14 @@ int main(int argc, char **argv)
 
         unsigned int dic_len[comm_sz];
         unsigned int i, j;
+        // Receiving local dict sizes from children processes
         for (i = 1; i < comm_sz; i++)
         {
             MPI_Recv(&dic_len[i], 1, MPI_UNSIGNED, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
 
-        // printf("Received dict size: %d\n", dic_len);
         struct dict_item k;
+        // Receiving local dict elements from children processes and adding them to master dict
         for (j = 1; j < comm_sz; j++)
         {
             for (i = 0; i < dic_len[j]; i++)
@@ -306,42 +300,16 @@ int main(int argc, char **argv)
                 add_item_to_master_dict(&MASTER_DICT, k.word, k.nr);
             }
         }
-        printf("Finalized dict\n");
         gettimeofday(&t2, NULL);
-        printf("Final dic length: %d\n", HASH_COUNT(MASTER_DICT));
         float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
 
-        printf("\nCompleted in %0.6f seconds\n", elapsed_time);
-        printf("\n\n Most popular words from resulting dictionary:\n");
-        sort_by_nr(&MASTER_DICT);
-        print_dict(MASTER_DICT, 10);
+        // printf("\nCompleted in %0.6f seconds\n", elapsed_time);
+        printf("%0.6f\n", elapsed_time);
+        // printf("Final dic length: %d\n", HASH_COUNT(MASTER_DICT));
+        // printf("\n\n Most popular words from resulting dictionary:\n");
+        // sort_by_nr(&MASTER_DICT);
+        // print_dict(MASTER_DICT, 10);
     }
-    // if (atoi(argv[2]) == 0)
-    // {
-    //     while ((read = getline(&line, &len, fp)) != -1)
-    //         add_item_to_dict(my_dict, line);
-    // }
-    // else
-    // {
-    //     while ((read = getline(&line, &len, fp)) != -1)
-    //     {
-    //         char *word = strtok(line, " ");
-    //         while (word)
-    //         {
-    //             add_item_to_dict(my_dict, word);
-    //             word = strtok(NULL, " ");
-    //         }
-    //     }
-    // }
-
-    // sort_by_nr(my_dict);
-    // gettimeofday(&t2, NULL);
-    // printf("\nCompleted in %0.6f seconds", elapsed_time);
-    // printf("\n\n Most popular words from resulting dictionary:\n");
-    // print_dict(my_dict, 30);
-
-    // fclose(fp);
-    // free(line);
     MPI_Finalize();
     return 0;
 }

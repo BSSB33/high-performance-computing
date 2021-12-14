@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <err.h>
+#include <omp.h>
 #include "../headers/uthash.h"
 
 /**
@@ -42,12 +43,6 @@ const int READ_BY_WORDS = 0;
 const int READ_BY_SENTENCES = 1;
 const int STRING_MAX = 10000000; // 100000;
 
-/**
- * @brief Add word to dictionary
- *
- * @param dict
- * @param word
- */
 void add_item_to_dict(struct dict_item_hh **dict, char *word)
 {
     struct dict_item_hh *s;
@@ -65,15 +60,9 @@ void add_item_to_dict(struct dict_item_hh **dict, char *word)
     }
 }
 
-/**
- * @brief Modified version of previous function, to account for number of already existing words
- *
- * @param master_dict
- * @param word
- * @param nr
- */
 void add_item_to_master_dict(struct dict_item_hh **master_dict, char *word, int nr)
 {
+    printf("word: %s, nr: %d\n", word, nr);
     struct dict_item_hh *s;
     HASH_FIND_STR(*master_dict, word, s);
     if (s == NULL)
@@ -118,13 +107,13 @@ void sort_by_nr(struct dict_item_hh **dict)
  * return codes from open, close, fstat, mmap, munmap all need to be
  * checked for error.
  */
-int read_file_line(const char *path, int line_no, int end_line_no, char *output)
+int read_file_line_fd(int fd, struct stat s, int line_no, int end_line_no, char *output)
 {
-    struct stat s;
+    // struct stat s;
     char *buf;
     off_t start = -1, end = -1;
     size_t i;
-    int ln, fd, ret = 1;
+    int ln, ret = 1;
 
     if (line_no == 1)
         start = 0;
@@ -136,8 +125,8 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
 
     line_no--; /* back to zero based, easier */
 
-    fd = open(path, O_RDONLY);
-    fstat(fd, &s);
+    // fd = open(path, O_RDONLY);
+    // fstat(fd, &s);
 
     /* Map the whole file.  If the file is huge (up to GBs), OS will swap
      * pages in and out, and because search for lines goes sequentially
@@ -149,6 +138,9 @@ int read_file_line(const char *path, int line_no, int end_line_no, char *output)
      * guaranteed small enough to be "stored in memory", so there.
      */
     buf = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+
+    /* optional; if the file is large, tell OS to read ahead */
+    // madvise(buf, s.st_size, MADV_SEQUENTIAL);
 
     int line_count = (end_line_no - line_no) - 1;
     for (i = ln = 0; i < s.st_size && ln <= line_no + line_count; i++)
@@ -198,6 +190,24 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
+    // FILE *fp;
+
+    // struct dict_item_hh *my_dict = NULL;
+
+    // fp = fopen(argv[1], "r");
+    // if (fp == NULL)
+    // {
+    //     exit(EXIT_FAILURE);
+    // }
+
+    // int FILE_MODE = atoi(argv[2]);
+    // if (FILE_MODE != READ_BY_SENTENCES || FILE_MODE != READ_BY_WORDS)
+    // {
+    //     printf("%d\n", FILE_MODE);
+
+    //     exit(EXIT_FAILURE);
+    // }
+
     int NR_OF_LINES = atoi(argv[3]);
 
     int comm_sz;
@@ -225,12 +235,15 @@ int main(int argc, char **argv)
     MPI_Type_create_struct(2, blocklen, disp, type, &DictType);
     MPI_Type_commit(&DictType);
 
+    int fd;
+    struct stat st;
+    fd = open(argv[1], O_RDONLY);
+    fstat(fd, &st);
+
     if (my_rank != 0) // Children
     {
-        // Creating local dict
         struct dict_item_hh *small_dict = NULL;
         char buf[STRING_MAX];
-        // start and end points for processing corresponding input chunk of file
         int start = my_rank * LINES_PER_PROCESS + 1;
         int end;
         if (my_rank < comm_sz - 1)
@@ -241,8 +254,10 @@ int main(int argc, char **argv)
         {
             end = NR_OF_LINES;
         }
-        // get lines to process and create local dict from them
-        read_file_line(argv[1], start, end, buf);
+        // printf("start: %d - end: %d - length: %d\n", start, end, end - start);
+
+        // read_file_line(argv[1], start, end, buf);
+        read_file_line_fd(fd, st, start, end, buf);
         char *word = strtok(buf, " \t\r\n\v\f");
 
         while (word)
@@ -251,26 +266,26 @@ int main(int argc, char **argv)
             // strcpy(last_word, word);
             word = strtok(NULL, " \t\r\n\v\f");
         }
-        // send local dict size to main process
+        // Sending the length of the small dictionary
         unsigned int small_dict_len = HASH_COUNT(small_dict);
         MPI_Send(&small_dict_len, 1, MPI_UNSIGNED, 0, 0, MPI_COMM_WORLD);
 
-        struct dict_item_hh *s;
-        // for all dict elements, create a custom datatype struct and send it to the main process
-        struct dict_item tmp[small_dict_len];
-        int i = 0;
-        for (s = small_dict; s != NULL; s = (struct dict_item_hh *)(s->hh.next))
-        {
-            struct dict_item k;
-            k.nr = s->nr;
-            strcpy(k.word, s->word);
-            tmp[i] = k;
-            i++;
-        }
-        MPI_Send(&tmp, small_dict_len, DictType, 0, 0, MPI_COMM_WORLD);
+        // struct dict_item_hh *s;
+        // struct dict_item tmp[small_dict_len];
+        // int i = 0;
+        // for (s = small_dict; s != NULL; s = (struct dict_item_hh *)(s->hh.next))
+        // {
+        //     struct dict_item k;
+        //     k.nr = s->nr;
+        //     strcpy(k.word, s->word);
+        //     tmp[i] = k;
+        //     i++;
+        // }
+        // MPI_Send(&tmp, small_dict_len, DictType, 0, 0, MPI_COMM_WORLD);
     }
     else // Main
     {
+        printf("\n\n----Parallel v2 starting with input file: %s\n", argv[1]);
         struct timeval t1, t2;
         gettimeofday(&t1, NULL);
 
@@ -279,7 +294,9 @@ int main(int argc, char **argv)
         char buf[STRING_MAX];
         int start = my_rank * LINES_PER_PROCESS + 1;
         int end = start + LINES_PER_PROCESS - 1;
-        read_file_line(argv[1], start, end, buf);
+        // printf("start: %d - end: %d\n", start, end);
+        // read_file_line(argv[1], start, end, buf);
+        read_file_line_fd(fd, st, start, end, buf);
 
         char *word = strtok(buf, " \t\r\n\v\f");
         while (word)
@@ -289,35 +306,47 @@ int main(int argc, char **argv)
         }
 
         unsigned int dic_len[comm_sz];
-        unsigned int i, j;
-        for (i = 1; i < comm_sz; i++)
+        dic_len[0] = HASH_COUNT(MASTER_DICT);
+        // unsigned int i, j;
+#pragma omp parallel for num_threads(comm_sz)
+        for (int i = 1; i < comm_sz; i++)
         {
+            int thread_num = omp_get_thread_num();
+            printf("Thread %d executing...\n", thread_num);
             MPI_Recv(&dic_len[i], 1, MPI_UNSIGNED, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        }
+            printf("Thread %d received dict len: %d...\n", thread_num, dic_len[i]);
 
-        // Recieving a small dictionary from every child and adding every record of it to the master dictionary
-        for (i = 1; i < comm_sz; i++)
-        {
-            struct dict_item received_dict[dic_len[i]];
-            MPI_Recv(&received_dict, dic_len[i], DictType, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            for (j = 0; j < dic_len[i]; j++)
-            {
-                add_item_to_master_dict(&MASTER_DICT, received_dict[j].word, received_dict[j].nr);
-            }
+            // Recieving a small dictionary from every child and addint every record of it to the master dictionary
+            
         }
+// #pragma omp parallel for num_threads(comm_sz)
+//         for (int i = 1; i < comm_sz; i++)
+//         {
+//             int thread_num = omp_get_thread_num();
+//             printf("Thread %d executing...\n", thread_num);
+//             struct dict_item received_dict[dic_len[i]];
+//             MPI_Recv(&received_dict, dic_len[i], DictType, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+//             printf("Thread %d received small dict...\n", thread_num);
+//             for (int j = 0; j < dic_len[i]; j++)
+//             {
+//                 add_item_to_master_dict(&MASTER_DICT, received_dict[j].word, received_dict[j].nr);
+//             }
+//             printf("Thread %d done...\n", thread_num);
+//         }
 
+        printf("Finalized dict\n");
         gettimeofday(&t2, NULL);
-        // printf("Final dict length: %d\n", HASH_COUNT(MASTER_DICT));
+        printf("Final dic length: %d\n", HASH_COUNT(MASTER_DICT));
         float elapsed_time = (t2.tv_sec - t1.tv_sec) + 1e-6 * (t2.tv_usec - t1.tv_usec);
 
-        // printf("Completed in %0.6f seconds\n\n", elapsed_time);
-        printf("%0.6f\n", elapsed_time);
-        // printf("\n\nMost popular words from resulting dictionary:\n");
-        // sort_by_nr(&MASTER_DICT);
-        // print_dict(MASTER_DICT, 10);
+        printf("\nCompleted in %0.6f seconds\n", elapsed_time);
+        printf("\n\nMost popular words from resulting dictionary:\n");
+        sort_by_nr(&MASTER_DICT);
+        print_dict(MASTER_DICT, 10);
 
-        // printf("\n\nProgram exiting...\n\n");
+        printf("\n\nProgram exiting...\n\n");
     }
+
     MPI_Finalize();
     return 0;
 }
